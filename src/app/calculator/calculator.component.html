@@ -2,4 +2,47 @@
   <div class="calculator-title-container">
     <span>計算每日熱量及營養素攝取</span>
   </div>
+
+  <div class="calculator-radio-container">
+    <span>我的基礎代謝率：</span>
+    <mat-radio-group aria-label="Select an option">
+      <mat-radio-button value="1">知道</mat-radio-button>
+      <mat-radio-button value="2">不知道</mat-radio-button>
+    </mat-radio-group>
+  </div>
+
+  <div class="calculator-basic-info-container">
+    <div class="calculator-sex-container calculator-radio-container">
+      <span>性別：</span>
+      <mat-radio-group aria-label="Select an option">
+        <mat-radio-button value="1">男</mat-radio-button>
+        <mat-radio-button value="2">女</mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+    <form class="calculator-form-container">
+      <div class="calculator-form-item">
+        <span>年齡：</span>
+        <app-td-input-formcontrol></app-td-input-formcontrol>
+      </div>
+      <div class="calculator-form-item">
+        <span>身高(公分)：</span>
+        <app-td-input-formcontrol></app-td-input-formcontrol>
+      </div>
+      <div class="calculator-form-item">
+        <span>體重(公斤)：</span>
+        <app-td-input-formcontrol></app-td-input-formcontrol>
+      </div>
+      <div class="calculator-form-item">
+        <span>體脂肪率(％)：</span>
+        <app-td-input-formcontrol></app-td-input-formcontrol>
+      </div>
+    </form>
+  </div>
+
+  <div class="calculator-bmr-container">
+    <span>基礎代謝率(kcal/day)</span>
+    <app-td-input-formcontrol></app-td-input-formcontrol>
+  </div>
+
 </section>

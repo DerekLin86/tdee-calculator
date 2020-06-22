@@ -1,5 +1,85 @@
 @import '../../shared//scss/shared-color.scss';
 
+$body-width: 90%;
+
+@mixin radioButton {
+  .mat-radio-button ~ .mat-radio-button {
+    margin-left: 1rem;
+  }
+}
+
+@mixin radioContainer {
+  .calculator-radio {
+    &-container {
+      color: $shared-grey-dark-color;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: .5rem;
+      width: $body-width;
+      @include radioButton();
+      span {
+        flex: 5;
+      }
+      .mat-radio-group {
+        flex: 6;
+      }
+    }
+  }
+}
+
+@mixin sexBlock {
+  .calculator-sex {
+    &-container {
+      & > span {
+        flex: 3;
+      }
+      .mat-radio-group {
+        flex: 2;
+      }
+    }
+  }
+}
+
+@mixin formContainer {
+  .calculator-form {
+    &-container {
+      color: $shared-grey-dark-color;
+      display: flex;
+      flex-direction: column;
+      width: $body-width;
+    }
+    &-item {
+      align-items: center;
+      display: flex;
+      margin-bottom: .75rem;
+      & > span {
+        flex: 3;
+      }
+      app-td-input-formcontrol {
+        flex: 2;
+      }
+    }
+  }
+}
+
+@mixin bmrBlock {
+  .calculator-bmr {
+    &-container {
+      align-items: center;
+      color: $shared-grey-dark-color;
+      display: flex;
+      margin: .5rem 0;
+      width: 90%;
+      & > span {
+        flex: 3;
+      }
+      app-td-input-formcontrol {
+        flex: 2;
+      }
+    }
+  }
+}
+
 .calculator {
   &-container {
     align-items: center;
@@ -15,7 +95,22 @@
       font-size: 1.5rem;
       height: 4rem;
       justify-content: center;
+      margin-bottom: 1rem;
+      width: 100%;
+    }
+  }
+  &-basic-info {
+    &-container {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      margin: 1rem 0;
       width: 100%;
     }
   }
 }
+
+@include radioContainer();
+@include sexBlock();
+@include formContainer();
+@include bmrBlock();
