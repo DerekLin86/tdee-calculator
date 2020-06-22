@@ -1,0 +1,21 @@
+@import '../../shared//scss/shared-color.scss';
+
+.calculator {
+  &-container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
+  &-title {
+    &-container {
+      align-items: center;
+      border-bottom: 1px solid $shared-grey-dark-color;
+      color: $shared-grey-dark-color;
+      display: flex;
+      font-size: 1.5rem;
+      height: 4rem;
+      justify-content: center;
+      width: 100%;
+    }
+  }
+}
