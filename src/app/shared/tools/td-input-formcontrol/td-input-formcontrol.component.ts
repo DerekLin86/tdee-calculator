@@ -13,7 +13,12 @@ export class TdInputFormcontrolComponent implements OnInit {
 
   @Input()
   set option(value: TDInputFormcontrol.Options) {
-    this._option = value;
+    const defaultOption = {
+      type: 'text'
+    } as TDInputFormcontrol.Options;
+
+
+    this._option = Object.assign(defaultOption, value);
   }
 
   get option() {
