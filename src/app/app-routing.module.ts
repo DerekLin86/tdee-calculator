@@ -7,10 +7,15 @@ import { AppComponent } from './app.component';
 
 const routes: Routes = [{
   path: 'calculator',
+  pathMatch: 'full',
   component: CalculatorComponent
 }, {
   path: '',
-  component: AppComponent
+  redirectTo: 'calculator',
+  pathMatch: 'full'
+}, {
+  path: '**',
+  redirectTo: 'calculator'
 }];
 
 @NgModule({
