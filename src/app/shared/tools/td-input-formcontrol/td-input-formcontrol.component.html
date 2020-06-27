@@ -1,6 +1,14 @@
-<input #elm
+<mat-form-field>
+  <mat-label>
+    <ng-content></ng-content>
+  </mat-label>
+  <input #elm
+    matInput
     class="td-input-formcontrol"
     [type]="option?.type || 'text'"
     [value]="viewModel?.value || ''"
     [disabled]="viewModel?.disabled"
->
+  >
+</mat-form-field>
+
+

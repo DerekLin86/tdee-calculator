@@ -12,7 +12,7 @@
   </div>
 
   <div class="calculator-basic-info-container">
-    <div class="calculator-sex-container calculator-radio-container">
+    <div class="calculator-sex-container">
       <span>性別：</span>
       <mat-radio-group aria-label="Select an option">
         <mat-radio-button value="1">男</mat-radio-button>
@@ -21,28 +21,17 @@
     </div>
 
     <form class="calculator-form-container">
-      <div class="calculator-form-item">
-        <span>年齡：</span>
-        <app-td-input-formcontrol></app-td-input-formcontrol>
-      </div>
-      <div class="calculator-form-item">
-        <span>身高(公分)：</span>
-        <app-td-input-formcontrol></app-td-input-formcontrol>
-      </div>
-      <div class="calculator-form-item">
-        <span>體重(公斤)：</span>
-        <app-td-input-formcontrol></app-td-input-formcontrol>
-      </div>
-      <div class="calculator-form-item">
-        <span>體脂肪率(％)：</span>
-        <app-td-input-formcontrol></app-td-input-formcontrol>
-      </div>
+      <app-td-input-formcontrol class="calculator-form-item">年齡</app-td-input-formcontrol>
+      <app-td-input-formcontrol class="calculator-form-item">身高(公分)</app-td-input-formcontrol>
+      <app-td-input-formcontrol class="calculator-form-item">體重(公斤)：</app-td-input-formcontrol>
+      <app-td-input-formcontrol class="calculator-form-item">體脂肪率(％)：</app-td-input-formcontrol>
     </form>
   </div>
 
+  <app-td-button>計算</app-td-button>
+
   <div class="calculator-bmr-container">
-    <span>基礎代謝率(kcal/day)</span>
-    <app-td-input-formcontrol></app-td-input-formcontrol>
+    <app-td-input-formcontrol>基礎代謝率(kcal/day)</app-td-input-formcontrol>
   </div>
 
   <div class="calculator-goal-container">
@@ -51,4 +40,15 @@
     <app-td-dropdown [argument]="viewModel.extraCalDropdownArg"></app-td-dropdown>
   </div>
 
+  <div class="calculator-result-container">
+    <app-td-input-formcontrol>總熱量消耗(kcal/day)</app-td-input-formcontrol>
+    <app-td-input-formcontrol>目標攝取熱量(kcal/day)</app-td-input-formcontrol>
+    <app-td-input-formcontrol>蛋白質目標(公克)</app-td-input-formcontrol>
+    <app-td-input-formcontrol>碳水目標(公克)</app-td-input-formcontrol>
+    <app-td-input-formcontrol>脂肪(公克)</app-td-input-formcontrol>
+  </div>
+
+  <div class="calculator-bottom-container">
+    <app-td-button>更新我的數據</app-td-button>
+  </div>
 </section>
