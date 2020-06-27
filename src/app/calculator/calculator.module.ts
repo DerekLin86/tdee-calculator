@@ -5,6 +5,7 @@ import { MatRadioModule } from '@angular/material/radio';
 
 import { CalculatorComponent } from './calculator.component';
 import { TdInputFormcontrolModule  } from '../shared/tools/td-input-formcontrol/td-input-formcontrol.module';
+import { TdDropdownModule } from '../shared/tools/td-dropdown/td-dropdown.module';
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import { TdInputFormcontrolModule  } from '../shared/tools/td-input-formcontrol/
     CommonModule,
     MatInputModule,
     MatRadioModule,
+    TdDropdownModule,
     TdInputFormcontrolModule
   ],
   exports: [CalculatorComponent]

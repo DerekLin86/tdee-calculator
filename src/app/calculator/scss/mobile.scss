@@ -69,13 +69,23 @@ $body-width: 90%;
       color: $shared-grey-dark-color;
       display: flex;
       margin: .5rem 0;
-      width: 90%;
+      width: $body-width;
       & > span {
         flex: 3;
       }
       app-td-input-formcontrol {
         flex: 2;
       }
+    }
+  }
+}
+
+@mixin goalBlock {
+  .calculator-goal {
+    &-container {
+      display: flex;
+      flex-direction: column;
+      width: $body-width;
     }
   }
 }
@@ -114,3 +124,4 @@ $body-width: 90%;
 @include sexBlock();
 @include formContainer();
 @include bmrBlock();
+@include goalBlock();
