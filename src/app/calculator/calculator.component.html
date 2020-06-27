@@ -12,20 +12,22 @@
   </div>
 
   <div class="calculator-basic-info-container">
-    <div class="calculator-sex-container">
-      <span>性別：</span>
-      <mat-radio-group aria-label="Select an option">
-        <mat-radio-button value="1">男</mat-radio-button>
-        <mat-radio-button value="2">女</mat-radio-button>
-      </mat-radio-group>
+    <span class="calculator-basic-info-title">基本資料</span>
+    <div class="calculator-basic-info-inner-container">
+      <form class="calculator-form-container">
+        <div class="calculator-sex-container">
+          <span>性別：</span>
+          <mat-radio-group aria-label="Select an option">
+            <mat-radio-button value="1">男</mat-radio-button>
+            <mat-radio-button value="2">女</mat-radio-button>
+          </mat-radio-group>
+        </div>
+        <app-td-input-formcontrol class="calculator-form-item">年齡</app-td-input-formcontrol>
+        <app-td-input-formcontrol class="calculator-form-item">身高(公分)</app-td-input-formcontrol>
+        <app-td-input-formcontrol class="calculator-form-item">體重(公斤)：</app-td-input-formcontrol>
+        <app-td-input-formcontrol class="calculator-form-item">體脂肪率(％)：</app-td-input-formcontrol>
+      </form>
     </div>
-
-    <form class="calculator-form-container">
-      <app-td-input-formcontrol class="calculator-form-item">年齡</app-td-input-formcontrol>
-      <app-td-input-formcontrol class="calculator-form-item">身高(公分)</app-td-input-formcontrol>
-      <app-td-input-formcontrol class="calculator-form-item">體重(公斤)：</app-td-input-formcontrol>
-      <app-td-input-formcontrol class="calculator-form-item">體脂肪率(％)：</app-td-input-formcontrol>
-    </form>
   </div>
 
   <app-td-button>計算</app-td-button>
