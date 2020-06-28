@@ -9,16 +9,22 @@
       <form class="calculator-form-container">
         <div class="calculator-radio-container">
           <span>我的基礎代謝率：</span>
-          <app-td-radio-button-group [options]="viewModel.bmrRadioOptions"></app-td-radio-button-group>
+          <app-td-radio-button-group
+            [options]="viewModel.bmrRadioOptions"
+            (optionChange)="bmrOptionChange($event)"
+            #knowBmr
+          ></app-td-radio-button-group>
         </div>
-        <div class="calculator-radio-container">
-          <span>性別：</span>
-          <app-td-radio-button-group [options]="viewModel.sexRadioOptions"></app-td-radio-button-group>
-        </div>
-        <app-td-input-formcontrol class="calculator-form-item">年齡</app-td-input-formcontrol>
-        <app-td-input-formcontrol class="calculator-form-item">身高(公分)</app-td-input-formcontrol>
-        <app-td-input-formcontrol class="calculator-form-item">體重(公斤)：</app-td-input-formcontrol>
-        <app-td-input-formcontrol class="calculator-form-item">體脂肪率(％)：</app-td-input-formcontrol>
+        <ng-container *ngIf="viewModel.isUnknown">
+          <div class="calculator-radio-container">
+            <span>性別：</span>
+            <app-td-radio-button-group [options]="viewModel.sexRadioOptions"></app-td-radio-button-group>
+          </div>
+          <app-td-input-formcontrol class="calculator-form-item">年齡</app-td-input-formcontrol>
+          <app-td-input-formcontrol class="calculator-form-item">身高(公分)</app-td-input-formcontrol>
+          <app-td-input-formcontrol class="calculator-form-item">體重(公斤)：</app-td-input-formcontrol>
+          <app-td-input-formcontrol class="calculator-form-item">體脂肪率(％)：</app-td-input-formcontrol>
+        </ng-container>
       </form>
       <div class="calculator-bmr-container">
         <app-td-input-formcontrol>基礎代謝率(kcal/day)</app-td-input-formcontrol>
