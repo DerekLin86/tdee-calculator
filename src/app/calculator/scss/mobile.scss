@@ -11,17 +11,22 @@ $body-width: 90%;
 @mixin radioContainer {
   .calculator-radio {
     &-container {
-      color: $shared-grey-dark-color;
       display: flex;
-      justify-content: space-between;
-      margin-bottom: .5rem;
-      width: $body-width;
+      flex-direction: column;
+      margin-bottom: .75rem;
+      width: 100%;
       @include radioButton();
       span {
-        flex: 5;
+        margin-bottom: .25rem;
       }
       .mat-radio-group {
-        flex: 6;
+        display: flex;
+        justify-content: space-evenly;
+        margin-left: auto;
+        width: 95%;
+        .mat-radio-button {
+          flex: 1;
+        }
       }
     }
   }
@@ -31,15 +36,16 @@ $body-width: 90%;
   .calculator-sex {
     &-container {
       display: flex;
+      flex-direction: column;
       margin-bottom: 1rem;
       width: 100%;
       & > span {
-        flex: 1;
+        margin-bottom: .25rem;
       }
       .mat-radio-group {
         display: flex;
-        flex: 2;
         justify-content: space-evenly;
+        margin-left: auto;
       }
     }
   }
@@ -61,7 +67,6 @@ $body-width: 90%;
       color: $shared-grey-dark-color;
       display: flex;
       justify-content: center;
-      margin: 1rem 0;
       width: $body-width;
     }
   }
@@ -83,20 +88,31 @@ $body-width: 90%;
   .calculator-result {
     &-container {
       align-items: center;
+      border: 1px solid $shared-grey-dark-color;
+      border-radius: 8px;
       color: $shared-grey-dark-color;
       display: flex;
       flex-direction: column;
-      width: $body-width;
+      margin: 1.75rem 0 0;
+      padding: 1.75rem 0.5rem 1rem;
+      position: relative;
+      width: 80%;
     }
-    &-item {
+    &-title {
+      background-color: #FFFFFF;
       display: flex;
-      margin-bottom: .5rem;
-      width: 100%;
-      & > span {
-        flex: 5;
-      }
-      app-td-input-formcontrol {
-        flex: 3;
+      font-size: 1.25rem;
+      font-weight: 700;
+      left: 12px;
+      padding: 0 .5rem;
+      position: absolute;
+      top: -14px;
+    }
+    &-inner {
+      &-container {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
       }
     }
   }

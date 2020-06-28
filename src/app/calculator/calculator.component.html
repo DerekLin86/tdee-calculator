@@ -3,19 +3,18 @@
     <span>計算每日熱量及營養素攝取</span>
   </div>
 
-  <div class="calculator-radio-container">
-    <span>我的基礎代謝率：</span>
-    <mat-radio-group aria-label="Select an option">
-      <mat-radio-button value="1">知道</mat-radio-button>
-      <mat-radio-button value="2">不知道</mat-radio-button>
-    </mat-radio-group>
-  </div>
-
   <div class="calculator-basic-info-container">
     <span class="calculator-basic-info-title">基本資料</span>
     <div class="calculator-basic-info-inner-container">
       <form class="calculator-form-container">
-        <div class="calculator-sex-container">
+        <div class="calculator-radio-container">
+          <span>我的基礎代謝率：</span>
+          <mat-radio-group aria-label="Select an option">
+            <mat-radio-button value="1">知道</mat-radio-button>
+            <mat-radio-button value="2">不知道</mat-radio-button>
+          </mat-radio-group>
+        </div>
+        <div class="calculator-radio-container">
           <span>性別：</span>
           <mat-radio-group aria-label="Select an option">
             <mat-radio-button value="1">男</mat-radio-button>
@@ -27,27 +26,26 @@
         <app-td-input-formcontrol class="calculator-form-item">體重(公斤)：</app-td-input-formcontrol>
         <app-td-input-formcontrol class="calculator-form-item">體脂肪率(％)：</app-td-input-formcontrol>
       </form>
+      <div class="calculator-bmr-container">
+        <app-td-input-formcontrol>基礎代謝率(kcal/day)</app-td-input-formcontrol>
+      </div>
+      <app-td-dropdown [argument]="viewModel.feqDropdownArg"></app-td-dropdown>
+    <app-td-dropdown [argument]="viewModel.goalDropdownArg"></app-td-dropdown>
+    <app-td-dropdown [argument]="viewModel.extraCalDropdownArg"></app-td-dropdown>
     </div>
   </div>
 
   <app-td-button>計算</app-td-button>
 
-  <div class="calculator-bmr-container">
-    <app-td-input-formcontrol>基礎代謝率(kcal/day)</app-td-input-formcontrol>
-  </div>
-
-  <div class="calculator-goal-container">
-    <app-td-dropdown [argument]="viewModel.feqDropdownArg"></app-td-dropdown>
-    <app-td-dropdown [argument]="viewModel.goalDropdownArg"></app-td-dropdown>
-    <app-td-dropdown [argument]="viewModel.extraCalDropdownArg"></app-td-dropdown>
-  </div>
-
   <div class="calculator-result-container">
-    <app-td-input-formcontrol>總熱量消耗(kcal/day)</app-td-input-formcontrol>
-    <app-td-input-formcontrol>目標攝取熱量(kcal/day)</app-td-input-formcontrol>
-    <app-td-input-formcontrol>蛋白質目標(公克)</app-td-input-formcontrol>
-    <app-td-input-formcontrol>碳水目標(公克)</app-td-input-formcontrol>
-    <app-td-input-formcontrol>脂肪(公克)</app-td-input-formcontrol>
+    <span class="calculator-result-title">您的目標</span>
+    <div class="calculator-result-inner-container">
+      <app-td-input-formcontrol>總熱量消耗(kcal/day)</app-td-input-formcontrol>
+      <app-td-input-formcontrol>目標攝取熱量(kcal/day)</app-td-input-formcontrol>
+      <app-td-input-formcontrol>蛋白質目標(公克)</app-td-input-formcontrol>
+      <app-td-input-formcontrol>碳水目標(公克)</app-td-input-formcontrol>
+      <app-td-input-formcontrol>脂肪(公克)</app-td-input-formcontrol>
+    </div>
   </div>
 
   <div class="calculator-bottom-container">
