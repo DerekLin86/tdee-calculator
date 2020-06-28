@@ -1,1 +1,7 @@
-<p>td-radio-button-group works!</p>
+<mat-radio-group aria-label="Select an option">
+  <mat-radio-button *ngFor="let option of options"
+    [value]="option?.value"
+  >
+    {{ option?.text }}
+  </mat-radio-button>
+</mat-radio-group>

@@ -9,17 +9,11 @@
       <form class="calculator-form-container">
         <div class="calculator-radio-container">
           <span>我的基礎代謝率：</span>
-          <mat-radio-group aria-label="Select an option">
-            <mat-radio-button value="1">知道</mat-radio-button>
-            <mat-radio-button value="2">不知道</mat-radio-button>
-          </mat-radio-group>
+          <app-td-radio-button-group [options]="viewModel.bmrRadioOptions"></app-td-radio-button-group>
         </div>
         <div class="calculator-radio-container">
           <span>性別：</span>
-          <mat-radio-group aria-label="Select an option">
-            <mat-radio-button value="1">男</mat-radio-button>
-            <mat-radio-button value="2">女</mat-radio-button>
-          </mat-radio-group>
+          <app-td-radio-button-group [options]="viewModel.sexRadioOptions"></app-td-radio-button-group>
         </div>
         <app-td-input-formcontrol class="calculator-form-item">年齡</app-td-input-formcontrol>
         <app-td-input-formcontrol class="calculator-form-item">身高(公分)</app-td-input-formcontrol>
