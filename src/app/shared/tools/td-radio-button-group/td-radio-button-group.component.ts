@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, EventEmitter, OnInit, Input, Output } from '@angular/core';
 
 import { TdRadioButtonGroup } from './td-radio-button-group';
 
@@ -11,18 +11,49 @@ export class TdRadioButtonGroupComponent implements OnInit {
 
   private _options = [] as Array<TdRadioButtonGroup.Option>;
 
+  public viewModel = {
+    currentValue: null
+  };
+
   @Input()
-  set options(value: Array<TdRadioButtonGroup.Option>) {
-    this._options = value;
+  set options(values: Array<TdRadioButtonGroup.Option>) {
+    this._options = values;
+
+    for (const value of values) {
+      if (!!value.selected) {
+        this.viewModel.currentValue = value.value;
+        break;
+      }
+    }
   }
 
   get options() {
     return this._options;
   }
 
-  constructor() { }
+  @Output()
+  optionChange = new EventEmitter<string | number>();
+
+  constructor() {}
 
   ngOnInit() {
+
   }
 
+  changeOption(event: TdRadioButtonGroup.changeEvent ) {
+    this.optionChange.emit(event.value);
+    this.options.forEach((option) => {
+      const isChangeOption =  option.value === event.value;
+
+      if (isChangeOption) {
+        option.selected = true;
+      } else {
+        option.selected = false;
+      }
+    });
+  }
+
+  getCurrentViewModel() {
+    return this.viewModel.currentValue;
+  }
 }

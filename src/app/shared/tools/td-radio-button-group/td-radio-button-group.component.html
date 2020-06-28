@@ -1,4 +1,7 @@
-<mat-radio-group aria-label="Select an option">
+<mat-radio-group #element
+  [(ngModel)]="viewModel.currentValue"
+  (change)="changeOption($event)"
+>
   <mat-radio-button *ngFor="let option of options"
     [value]="option?.value"
   >
