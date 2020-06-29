@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 
 import { CalculatorComponent } from './calculator.component';
@@ -13,8 +14,10 @@ import { TdRadioButtonGroupModule } from '../shared/tools/td-radio-button-group/
   declarations: [CalculatorComponent],
   imports: [
     CommonModule,
+    FormsModule,
     TdButtonModule,
     MatInputModule,
+    ReactiveFormsModule,
     TdDropdownModule,
     TdInputFormcontrolModule,
     TdRadioButtonGroupModule

@@ -26,9 +26,16 @@
           <app-td-input-formcontrol class="calculator-form-item">體脂肪率(％)：</app-td-input-formcontrol>
         </ng-container>
       </form>
-      <div class="calculator-bmr-container">
-        <app-td-input-formcontrol>基礎代謝率(kcal/day)</app-td-input-formcontrol>
-      </div>
+      <form class="calculator-bmr-container"
+        [formGroup]="viewModel.formGroup.basicBmr"
+      >
+        <app-td-input-formcontrol
+          [option]="viewModel.basicBmrInputOption"
+          formControlName='basicBmr'
+        >
+          基礎代謝率(kcal/day)
+        </app-td-input-formcontrol>
+      </form>
       <app-td-dropdown [argument]="viewModel.feqDropdownArg"></app-td-dropdown>
     <app-td-dropdown [argument]="viewModel.goalDropdownArg"></app-td-dropdown>
     <app-td-dropdown [argument]="viewModel.extraCalDropdownArg"></app-td-dropdown>
@@ -40,11 +47,11 @@
   <div class="calculator-result-container">
     <span class="calculator-result-title">您的目標</span>
     <div class="calculator-result-inner-container">
-      <app-td-input-formcontrol>總熱量消耗(kcal/day)</app-td-input-formcontrol>
-      <app-td-input-formcontrol>目標攝取熱量(kcal/day)</app-td-input-formcontrol>
-      <app-td-input-formcontrol>蛋白質目標(公克)</app-td-input-formcontrol>
-      <app-td-input-formcontrol>碳水目標(公克)</app-td-input-formcontrol>
-      <app-td-input-formcontrol>脂肪(公克)</app-td-input-formcontrol>
+      <app-td-input-formcontrol [option]="viewModel.totalKcalInputOption">總熱量消耗(kcal/day)</app-td-input-formcontrol>
+      <app-td-input-formcontrol [option]="viewModel.goalKcalInputOption">目標攝取熱量(kcal/day)</app-td-input-formcontrol>
+      <app-td-input-formcontrol [option]="viewModel.prInputOption">蛋白質目標(公克)</app-td-input-formcontrol>
+      <app-td-input-formcontrol [option]="viewModel.choInputOption">碳水目標(公克)</app-td-input-formcontrol>
+      <app-td-input-formcontrol [option]="viewModel.fatInputOption">脂肪(公克)</app-td-input-formcontrol>
     </div>
   </div>
 

@@ -1,8 +1,12 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 import { TdDrowdown } from '../shared/tools/td-dropdown/td-dropdown';
 import { TdRadioButtonGroupComponent } from '../shared/tools/td-radio-button-group/td-radio-button-group.component';
 import { TdRadioButtonGroup } from '../shared/tools/td-radio-button-group/td-radio-button-group';
+import { TDInputFormcontrol } from '../shared/tools/td-input-formcontrol/td-input-formcontrol';
+import { TdInputFormcontrolComponent } from '../shared/tools/td-input-formcontrol/td-input-formcontrol.component';
+import { Calculator } from './calculator';
 
 @Component({
   selector: 'app-calculator',
@@ -30,6 +34,10 @@ export class CalculatorComponent implements AfterViewInit, OnInit {
       value: '2',
       selected: false
     }] as Array<TdRadioButtonGroup.Option>,
+    basicBmrInputOption: {
+      type: 'number',
+      disabled: false
+    } as TDInputFormcontrol.Options,
     feqDropdownArg: {
       title: '每週運動頻率'
     } as TdDrowdown.Argument,
@@ -39,16 +47,45 @@ export class CalculatorComponent implements AfterViewInit, OnInit {
     extraCalDropdownArg: {
       title: '額外卡路里'
     },
-    isUnknown: null as boolean
+    totalKcalInputOption: {
+      type: 'number',
+      disabled: true
+    } as TDInputFormcontrol.Options,
+    goalKcalInputOption: {
+      type: 'number',
+      disabled: true
+    } as TDInputFormcontrol.Options,
+    prInputOption: {
+      type: 'number',
+      disabled: true
+    } as TDInputFormcontrol.Options,
+    choInputOption: {
+      type: 'number',
+      disabled: true
+    } as TDInputFormcontrol.Options,
+    fatInputOption: {
+      type: 'number',
+      disabled: true
+    } as TDInputFormcontrol.Options,
+    isUnknown: true as boolean,
+    formGroup: {
+      basicBmr: null as FormGroup
+    }
   };
 
   @ViewChild('knowBmr', {static: true})
   knowBmrRadioComponet: TdRadioButtonGroupComponent;
 
+  @ViewChild('basicBmr', {static: false})
+  tdInputFormcontrolComponent: TdInputFormcontrolComponent;
 
-  constructor() { }
+
+  constructor(
+    private formBuilder: FormBuilder
+  ) { }
 
   ngOnInit() {
+    this.initForm();
   }
 
   ngAfterViewInit() {
@@ -60,11 +97,29 @@ export class CalculatorComponent implements AfterViewInit, OnInit {
       this.viewModel.bmrRadioOptions.find(
         option => option.text === '不知道'
       ).value === value;
+
+    this.updateBasicBmrInputOption();
+  }
+
+  private initForm() {
+    const defaultSetting = {
+      basicBmr: [null]
+    } as Calculator.FormField.BmrControl;
+
+    this.viewModel.formGroup.basicBmr = this.formBuilder.group(defaultSetting);
   }
 
   private initFormValue() {
     this.viewModel.isUnknown = this.viewModel.bmrRadioOptions.find(
       option => option.text === '不知道'
     ).selected;
+
+    this.updateBasicBmrInputOption();
+  }
+
+  private updateBasicBmrInputOption() {
+    this.viewModel.basicBmrInputOption = Object.assign({}, this.viewModel.basicBmrInputOption, {
+      disabled: this.viewModel.isUnknown
+    });
   }
 }
