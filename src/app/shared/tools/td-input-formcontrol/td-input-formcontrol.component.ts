@@ -1,13 +1,19 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, forwardRef, OnInit, Input  } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { TDInputFormcontrol } from './td-input-formcontrol';
 
 @Component({
   selector: 'app-td-input-formcontrol',
   templateUrl: './td-input-formcontrol.component.html',
-  styleUrls: ['./td-input-formcontrol.component.scss']
+  styleUrls: ['./td-input-formcontrol.component.scss'],
+  providers: [{
+    provide: NG_VALUE_ACCESSOR,
+    useExisting: forwardRef(() => TdInputFormcontrolComponent),
+    multi: true
+  }]
 })
-export class TdInputFormcontrolComponent implements OnInit {
+export class TdInputFormcontrolComponent implements ControlValueAccessor, OnInit {
 
   private _option = null as TDInputFormcontrol.Options;
 
@@ -17,8 +23,7 @@ export class TdInputFormcontrolComponent implements OnInit {
       type: 'text'
     } as TDInputFormcontrol.Options;
 
-
-    this._option = Object.assign(defaultOption, value);
+    this._option = Object.assign({}, defaultOption, value);
   }
 
   get option() {
@@ -31,5 +36,13 @@ export class TdInputFormcontrolComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  writeValue(value: TDInputFormcontrol.ViewModel) {
+    this.viewModel = value;
+  }
+
+  registerOnChange() {}
+
+  registerOnTouched() {}
 
 }

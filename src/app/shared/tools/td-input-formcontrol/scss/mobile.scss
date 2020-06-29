@@ -1,0 +1,13 @@
+@mixin disabledStyle {
+  .input-container.disabled {
+    cursor: not-allowed;
+    ::ng-deep {
+      .mat-form-field-wrapper, .mat-form-field {
+        cursor: not-allowed;
+        pointer-events: none;
+      }
+    }
+  }
+}
+
+@include disabledStyle();

@@ -1,14 +1,17 @@
-<mat-form-field>
-  <mat-label>
-    <ng-content></ng-content>
-  </mat-label>
-  <input #elm
-    matInput
-    class="td-input-formcontrol"
-    [type]="option?.type || 'text'"
-    [value]="viewModel?.value || ''"
-    [disabled]="viewModel?.disabled"
-  >
-</mat-form-field>
+<div class="input-container" [ngClass]="{'disabled': option?.disabled}">
+  <mat-form-field>
+    <mat-label>
+      <ng-content></ng-content>
+    </mat-label>
+    <input #elm
+      matInput
+      class="td-input-formcontrol"
+      [type]="option?.type || 'text'"
+      [value]="viewModel?.value || ''"
+      [disabled]="option?.disabled"
+    >
+  </mat-form-field>
+</div>
+
 
 
