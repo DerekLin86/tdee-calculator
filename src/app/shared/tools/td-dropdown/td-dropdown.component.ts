@@ -34,6 +34,8 @@ export class TdDropdownComponent implements OnInit {
     return this._range;
   }
 
+  public viewModel = null as TdDrowdown.Option;
+
   constructor() { }
 
   ngOnInit() {
