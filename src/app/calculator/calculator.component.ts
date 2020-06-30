@@ -7,6 +7,7 @@ import { TdRadioButtonGroup } from '../shared/tools/td-radio-button-group/td-rad
 import { TDInputFormcontrol } from '../shared/tools/td-input-formcontrol/td-input-formcontrol';
 import { TdInputFormcontrolComponent } from '../shared/tools/td-input-formcontrol/td-input-formcontrol.component';
 import { Calculator } from './calculator';
+import { CalculatorService } from './calculator.service';
 
 @Component({
   selector: 'app-calculator',
@@ -39,14 +40,20 @@ export class CalculatorComponent implements AfterViewInit, OnInit {
       disabled: false
     } as TDInputFormcontrol.Options,
     feqDropdownArg: {
-      title: '每週運動頻率'
+      title: '每週運動頻率',
+      disableNoneOption: true
     } as TdDrowdown.Argument,
+    feqDropdownRange: [] as Array<TdDrowdown.Option>,
     goalDropdownArg: {
-      title: '目標'
+      title: '目標',
+      disableNoneOption: true
     } as TdDrowdown.Argument,
+    goalDropdownOptions: [] as Array<TdDrowdown.Option>,
     extraCalDropdownArg: {
-      title: '額外卡路里'
+      title: '額外卡路里',
+      disableNoneOption: true
     },
+    extraCalDropdownOptions: [] as Array<TdDrowdown.Option>,
     totalKcalInputOption: {
       type: 'number',
       disabled: true
@@ -81,11 +88,13 @@ export class CalculatorComponent implements AfterViewInit, OnInit {
 
 
   constructor(
+    private calculatorService: CalculatorService,
     private formBuilder: FormBuilder
   ) { }
 
   ngOnInit() {
     this.initForm();
+    this.initDropOption();
   }
 
   ngAfterViewInit() {
@@ -115,6 +124,23 @@ export class CalculatorComponent implements AfterViewInit, OnInit {
     ).selected;
 
     this.updateBasicBmrInputOption();
+  }
+
+  private initDropOption() {
+    this.calculatorService.getSportFeqOptions()
+      .subscribe((options) => {
+        this.viewModel.feqDropdownRange = options;
+      });
+
+    this.calculatorService.getGoalOptions()
+      .subscribe((options) => {
+        this.viewModel.goalDropdownOptions = options;
+      });
+
+    this.calculatorService.getExtraCalOptions()
+      .subscribe((options) => {
+        this.viewModel.extraCalDropdownOptions = options;
+      });
   }
 
   private updateBasicBmrInputOption() {
