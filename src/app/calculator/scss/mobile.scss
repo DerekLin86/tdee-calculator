@@ -43,7 +43,7 @@ $body-width: 90%;
       color: $shared-grey-dark-color;
       display: flex;
       justify-content: center;
-      width: $body-width;
+      width: 100%;
     }
   }
 }
@@ -90,6 +90,16 @@ $body-width: 90%;
         display: flex;
         flex-direction: column;
       }
+    }
+  }
+}
+
+@mixin dropdownBlock {
+  .calculator-dropdown {
+    &-container {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
     }
   }
 }

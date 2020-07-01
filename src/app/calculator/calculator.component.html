@@ -36,15 +36,22 @@
           基礎代謝率(kcal/day)
         </app-td-input-formcontrol>
       </form>
-      <app-td-dropdown [argument]="viewModel?.feqDropdownArg"
-        [range]="viewModel?.feqDropdownRange"
-      ></app-td-dropdown>
-      <app-td-dropdown [argument]="viewModel?.goalDropdownArg"
-        [range]="viewModel?.goalDropdownOptions"
-      ></app-td-dropdown>
-      <app-td-dropdown [argument]="viewModel?.extraCalDropdownArg"
-        [range]="viewModel?.extraCalDropdownOptions"
-      ></app-td-dropdown>
+      <form class="calculator-dropdown-container"
+        [formGroup]="viewModel.formGroup.dropdown"
+      >
+        <app-td-dropdown [argument]="viewModel?.feqDropdownArg"
+          [range]="viewModel?.feqDropdownRange"
+          formControlName="feq"
+        ></app-td-dropdown>
+        <app-td-dropdown [argument]="viewModel?.goalDropdownArg"
+          [range]="viewModel?.goalDropdownOptions"
+          formControlName="goal"
+        ></app-td-dropdown>
+        <app-td-dropdown [argument]="viewModel?.extraCalDropdownArg"
+          [range]="viewModel?.extraCalDropdownOptions"
+          formControlName="extraCal"
+        ></app-td-dropdown>
+      </form>
     </div>
   </div>
 

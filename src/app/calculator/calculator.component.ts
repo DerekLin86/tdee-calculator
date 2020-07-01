@@ -76,7 +76,8 @@ export class CalculatorComponent implements AfterViewInit, OnInit {
     } as TDInputFormcontrol.Options,
     isUnknown: true as boolean,
     formGroup: {
-      basicBmr: null as FormGroup
+      basicBmr: null as FormGroup,
+      dropdown: null as FormGroup
     }
   };
 
@@ -111,11 +112,18 @@ export class CalculatorComponent implements AfterViewInit, OnInit {
   }
 
   private initForm() {
-    const defaultSetting = {
+    const defaultBmrSetting = {
       basicBmr: [null]
     } as Calculator.FormField.BmrControl;
+    const defaultDropdownSetting = {
+      feq: [null],
+      goal: [null],
+      extraCal: [null]
+    } as Calculator.FormField.DropdownControl;
 
-    this.viewModel.formGroup.basicBmr = this.formBuilder.group(defaultSetting);
+
+    this.viewModel.formGroup.basicBmr = this.formBuilder.group(defaultBmrSetting);
+    this.viewModel.formGroup.dropdown = this.formBuilder.group(defaultDropdownSetting);
   }
 
   private initFormValue() {
