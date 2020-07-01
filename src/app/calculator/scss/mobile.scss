@@ -97,6 +97,7 @@ $body-width: 90%;
 @mixin dropdownBlock {
   .calculator-dropdown {
     &-container {
+      align-items: center;
       display: flex;
       flex-direction: column;
       width: 100%;
@@ -170,6 +171,7 @@ $body-width: 90%;
 
 @include radioContainer();
 @include formContainer();
+@include dropdownBlock();
 @include bmrBlock();
 @include goalBlock();
 @include resultBlock();
