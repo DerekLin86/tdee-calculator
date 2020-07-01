@@ -9,4 +9,8 @@ export namespace TdDrowdown {
     text: string;
     value?: string | number;
   }
+
+  export interface ViewModel {
+    value: string | number;
+  }
 }

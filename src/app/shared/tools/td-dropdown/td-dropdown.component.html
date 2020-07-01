@@ -1,9 +1,14 @@
 <mat-form-field>
   <mat-label>{{ argument?.title }}</mat-label>
-  <mat-select [(value)]="viewModel">
+  <mat-select
+    [value]="viewModel?.value || ''"
+    (selectionChange)="selectedChanged($event)"
+  >
     <mat-option *ngIf="!argument.disableNoneOption">None</mat-option>
     <mat-option *ngFor="let option of range"
-      value="option?.value">{{ option?.text }}
+      [value]="option?.value"
+    >
+      {{ option?.text }}
     </mat-option>
   </mat-select>
 </mat-form-field>
