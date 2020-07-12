@@ -11,5 +11,15 @@
 </head>
 <body>
   <app-root></app-root>
+  <script>
+    tdeeApiWrapper = null
+    if (typeof $SFCONTROLLER != 'undefined') {
+        tdeeApiWrapper = $SFCONTROLLER;
+    }
+
+    function getTdeeApiWrapper() {
+        return tdeeApiWrapper;
+    }
+</script>
 </body>
 </html>
