@@ -1,23 +1,37 @@
 import { Injectable } from '@angular/core';
-import { SaleForceAPI, ApiObservableBuilder } from './saleforce-api';
+import { Observable } from 'rxjs';
 
-declare let getTdeeApiWrapper: () => any;
+import { SaleForceAPI } from './saleforce-api';
+
+declare let getTdeeApiWrapper: any;
 
 @Injectable()
 export class SaleforceApiService {
 
-  private DEFAULT_CONFIG: SaleForceAPI.CallConfiguration = { buffer: true, escape: false, timeout: 30000 };
+  public controller: SaleForceAPI.Controller.Interface = null;
 
-  constructor() { }
-
-  private getCallBuilder<T>(): ApiObservableBuilder<T> {
-    return new ApiObservableBuilder<T>();
+  constructor() {
+    this.initController();
   }
 
-  public helloAngular(name: string) {
-    const api = getTdeeApiWrapper();
-    const builder = this.getCallBuilder<string>();
+  calculateTDEE(arg: SaleForceAPI.CalculateTDEE.Argument) {
+    const observer = new Observable((observer) => {
+      if (this.controller) {
+        this.controller.calculateTDEE(
+          JSON.stringify(arg),
+          (result: SaleForceAPI.CalculateTDEE.Response, status) => {
+            observer.next(result);
+            observer.complete();
+          },
+          { buffer: true, escape: false, timeout: 30000 }
+        );
+      }
+    });
 
-    return (builder.build(() => api.helloAngular(name, builder.getResponseHandler(), this.DEFAULT_CONFIG)));
+    return observer;
+  }
+
+  private initController() {
+    this.controller = getTdeeApiWrapper();
   }
 }

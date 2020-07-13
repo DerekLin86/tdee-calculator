@@ -9,6 +9,7 @@ import { TdInputFormcontrolModule  } from '../shared/tools/td-input-formcontrol/
 import { TdDropdownModule } from '../shared/tools/td-dropdown/td-dropdown.module';
 import { TdButtonModule } from '../shared/tools/td-button/td-button.module';
 import { TdRadioButtonGroupModule } from '../shared/tools/td-radio-button-group/td-radio-button-group.module';
+import { SaleforceApiModule } from '../saleforce-api/saleforce-api.module';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { TdRadioButtonGroupModule } from '../shared/tools/td-radio-button-group/
     ReactiveFormsModule,
     TdDropdownModule,
     TdInputFormcontrolModule,
-    TdRadioButtonGroupModule
+    TdRadioButtonGroupModule,
+    SaleforceApiModule
   ],
   exports: [CalculatorComponent],
   providers: [CalculatorService]

@@ -1,6 +1,14 @@
 import { Observable } from 'rxjs';
 
 export namespace SaleForceAPI {
+  export namespace Controller {
+    export interface Interface {
+      calculateTDEE(
+        arg: any,
+        callback: any,
+        config: any): void;
+    }
+  }
   export interface ApiStatus {
     statusCode: number;
     status: boolean;
@@ -13,6 +21,32 @@ export namespace SaleForceAPI {
     buffer: boolean;
     escape: boolean;
     timeout: number;
+  }
+
+  export namespace CalculateTDEE {
+    export interface Argument {
+      age: number;
+      height: number;
+      weight: number;
+      BFP: number;
+      BMR: number;
+      exeFrequency: number;
+      gender: string;
+      knowBMR: boolean;
+      goal: string;
+      calorieDeficit: number;
+      calorieSurplus: number;
+    }
+
+    export interface Response {
+      status: string;
+      message: string;
+      TDEE: number;
+      targetIntake: number;
+      targetProteinIntake: number;
+      targetCarbIntake: number;
+      targetFatIntake: number;
+    }
   }
 }
 

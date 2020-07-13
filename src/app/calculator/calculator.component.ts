@@ -8,6 +8,8 @@ import { TDInputFormcontrol } from '../shared/tools/td-input-formcontrol/td-inpu
 import { TdInputFormcontrolComponent } from '../shared/tools/td-input-formcontrol/td-input-formcontrol.component';
 import { Calculator } from './calculator';
 import { CalculatorService } from './calculator.service';
+import { SaleforceApiService } from '../saleforce-api/saleforce-api.service';
+import { SaleForceAPI } from '../saleforce-api/saleforce-api';
 
 @Component({
   selector: 'app-calculator',
@@ -87,15 +89,31 @@ export class CalculatorComponent implements AfterViewInit, OnInit {
   @ViewChild('basicBmr', {static: false})
   tdInputFormcontrolComponent: TdInputFormcontrolComponent;
 
+  private fakeData = {
+    age: 12,
+    height: 186,
+    weight: 85,
+    BFP: 20,
+    BMR: 2000,
+    exeFrequency: 1.375,
+    gender: 'male',
+    knowBMR: false,
+    goal: 'maintain',
+    calorieDeficit: 1.2,
+    calorieSurplus: 0.85
+  } as SaleForceAPI.CalculateTDEE.Argument;
+
 
   constructor(
     private calculatorService: CalculatorService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private saleforceApiService: SaleforceApiService
   ) { }
 
   ngOnInit() {
     this.initForm();
     this.initDropOption();
+    this.calculateTDEE(this.fakeData);
   }
 
   ngAfterViewInit() {
@@ -109,6 +127,15 @@ export class CalculatorComponent implements AfterViewInit, OnInit {
       ).value === value;
 
     this.updateBasicBmrInputOption();
+  }
+
+  calculateTDEE(arg: SaleForceAPI.CalculateTDEE.Argument) {
+    this.saleforceApiService.calculateTDEE(
+      arg as SaleForceAPI.CalculateTDEE.Argument
+    )
+      .subscribe((value) => {
+        console.info(value);
+      });
   }
 
   private initForm() {
