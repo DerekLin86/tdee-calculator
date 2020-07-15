@@ -1,0 +1,44 @@
+@import '../../shared/scss/shared-color.scss';
+
+
+:host {
+  width: 80%;
+}
+
+.gender-selection {
+  &-container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  &-title {
+    color: $shared-grey-dark-color;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+  &-content {
+    &-container {
+      display: flex;
+      justify-content: space-evenly;
+      padding: 8px;
+      width: 100%;
+    }
+  }
+  &-item {
+    align-items: center;
+    border-radius: 28px;
+    box-shadow: 3px 0px 7px rgba(0, 0, 0, 0.3);
+    color: $shared-grey-dark-color;
+    display: flex;
+    flex-basis: 25%;
+    font-size: 4rem;
+    height: 90px;
+    justify-content: center;
+    &:active {
+      background-color: #7BED8D;
+      box-shadow: unset;
+      transform: scale(.95);
+    }
+  }
+}
