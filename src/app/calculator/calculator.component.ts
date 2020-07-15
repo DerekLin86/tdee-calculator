@@ -111,7 +111,6 @@ export class CalculatorComponent implements AfterViewInit, OnInit {
   ngOnInit() {
     this.initForm();
     this.initDropOption();
-    this.calculateTDEE(this.fakeData);
   }
 
   ngAfterViewInit() {
@@ -127,13 +126,12 @@ export class CalculatorComponent implements AfterViewInit, OnInit {
     this.updateBasicBmrInputOption();
   }
 
-  calculateTDEE(arg: SaleForceAPI.CalculateTDEE.Argument) {
-    this.saleforceApiService.calculateTDEE(
-      arg as SaleForceAPI.CalculateTDEE.Argument
-    )
-      .subscribe((value) => {
-        console.info(value);
-      });
+  calculateTDEE() {
+    this.calculatorService.calculateTdee(
+      this.fakeData
+    ).subscribe((value) => {
+      console.info(value);
+    });
   }
 
   private initForm() {

@@ -2,11 +2,15 @@ import { Injectable } from '@angular/core';
 import { of, Observable } from 'rxjs';
 
 import { TdDrowdown } from '../shared/tools/td-dropdown/td-dropdown';
+import { SaleForceAPI } from '../saleforce-api/saleforce-api';
+import { SaleforceApiService } from '../saleforce-api/saleforce-api.service';
 
 @Injectable()
 export class CalculatorService {
 
-  constructor() { }
+  constructor(
+    private saleforceApiService: SaleforceApiService
+  ) { }
 
   getSportFeqOptions(): Observable<Array<TdDrowdown.Option>> {
     const feqOptions = [{
@@ -68,5 +72,11 @@ export class CalculatorService {
     }] as Array<TdDrowdown.Option>;
 
     return of(options);
+  }
+
+  calculateTdee(arg: SaleForceAPI.CalculateTDEE.Argument): Observable<SaleForceAPI.CalculateTDEE.Response> {
+    return this.saleforceApiService.calculateTDEE(
+      arg as SaleForceAPI.CalculateTDEE.Argument
+    ) as Observable<SaleForceAPI.CalculateTDEE.Response>;
   }
 }
