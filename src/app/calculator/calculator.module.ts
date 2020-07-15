@@ -5,6 +5,7 @@ import { MatInputModule } from '@angular/material/input';
 
 import { CalculatorComponent } from './calculator.component';
 import { CalculatorService } from './calculator.service';
+import { GenderSelectionModule } from '../gender-selection/gender-selection.module';
 import { TdInputFormcontrolModule  } from '../shared/tools/td-input-formcontrol/td-input-formcontrol.module';
 import { TdDropdownModule } from '../shared/tools/td-dropdown/td-dropdown.module';
 import { TdButtonModule } from '../shared/tools/td-button/td-button.module';
@@ -17,6 +18,7 @@ import { SaleforceApiModule } from '../saleforce-api/saleforce-api.module';
   imports: [
     CommonModule,
     FormsModule,
+    GenderSelectionModule,
     TdButtonModule,
     MatInputModule,
     ReactiveFormsModule,
