@@ -35,7 +35,7 @@
     font-size: 4rem;
     height: 90px;
     justify-content: center;
-    &:active {
+    &.selected {
       background-color: #7BED8D;
       box-shadow: unset;
       transform: scale(.95);

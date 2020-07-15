@@ -3,7 +3,12 @@
     <span>請問你是男生還是女生？</span>
   </div>
   <div class="gender-selection-content-container">
-    <div class="gender-selection-item">M</div>
-    <div class="gender-selection-item">F</div>
+    <div *ngFor="let option of viewModel.options; let index = index"
+      class="gender-selection-item"
+      (click)="selectOption(option, index)"
+      #genderItem
+    >
+      {{ option.text }}
+    </div>
   </div>
 </section>
