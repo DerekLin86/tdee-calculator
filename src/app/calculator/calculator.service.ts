@@ -12,23 +12,23 @@ export class CalculatorService {
     const feqOptions = [{
       id: 1,
       text: '幾乎沒有',
-      value: 1
+      value: 1.2
     }, {
       id: 2,
       text: '一次到三次',
-      value: 2
+      value: 1.375
     }, {
       id: 3,
       text: ' 三次到五次',
-      value: 3
+      value: 1.55
     }, {
       id: 4,
       text: '六次到七次',
-      value: 4
+      value: 1.725
     }, {
       id: 5,
       text: '六到七次高強度運動',
-      value: 5
+      value: 1.9
     }] as Array<TdDrowdown.Option>;
 
     return of(feqOptions);
@@ -38,15 +38,15 @@ export class CalculatorService {
     const options = [{
       id: 1,
       text: '增肌',
-      value: 1
+      value: 'bulking'
     }, {
       id: 2,
       text: '維持',
-      value: 2
+      value: 'maintain'
     }, {
       id: 3,
       text: '減脂',
-      value: 3
+      value: 'cutting'
     }] as Array<TdDrowdown.Option>;
 
     return of(options);
@@ -56,15 +56,15 @@ export class CalculatorService {
     const options = [{
       id: 1,
       text: '10%',
-      value: 1
+      value: 10
     }, {
       id: 2,
       text: '20%',
-      value: 2
+      value: 20
     }, {
       id: 3,
       text: '30%',
-      value: 3
+      value: 30
     }] as Array<TdDrowdown.Option>;
 
     return of(options);

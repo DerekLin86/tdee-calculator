@@ -31,12 +31,19 @@ export namespace SaleForceAPI {
       BFP: number;
       BMR: number;
       exeFrequency: number;
-      gender: string;
+      gender: CalculateTDEE.Gender;
       knowBMR: boolean;
-      goal: string;
+      goal: CalculateTDEE.GoalType;
+    }
+
+    export interface ServerArg extends CalculateTDEE.Argument {
       calorieDeficit: number;
       calorieSurplus: number;
     }
+
+    export type Gender = 'male' | 'female';
+
+    export type GoalType = 'bulking' | 'maintain' | 'cutting';
 
     export interface Response {
       status: string;

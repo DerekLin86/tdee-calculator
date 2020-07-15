@@ -30,11 +30,11 @@ export class CalculatorComponent implements AfterViewInit, OnInit {
     }] as Array<TdRadioButtonGroup.Option>,
     sexRadioOptions: [{
       text: '男',
-      value: '1',
+      value: 'male',
       selected: true
     }, {
       text: '女',
-      value: '2',
+      value: 'female',
       selected: false
     }] as Array<TdRadioButtonGroup.Option>,
     basicBmrInputOption: {
@@ -98,9 +98,7 @@ export class CalculatorComponent implements AfterViewInit, OnInit {
     exeFrequency: 1.375,
     gender: 'male',
     knowBMR: false,
-    goal: 'maintain',
-    calorieDeficit: 1.2,
-    calorieSurplus: 0.85
+    goal: 'maintain'
   } as SaleForceAPI.CalculateTDEE.Argument;
 
 
