@@ -2,15 +2,21 @@
 
 
 :host {
-  width: 80%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+  width: 100%;
 }
 
 .gender-selection {
   &-container {
     align-items: center;
+    border-radius: 16px;
+    box-shadow: 3px 0px 7px rgba(0, 0, 0, 0.3);
     display: flex;
     flex-direction: column;
-    width: 100%;
+    padding: 1rem 0;
+    width: 80%;
   }
   &-title {
     color: $shared-grey-dark-color;
