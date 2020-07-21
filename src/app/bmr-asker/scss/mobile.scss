@@ -1,0 +1,41 @@
+@import '../../shared/scss/shared-color.scss';
+
+:host {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.bmr-asker {
+  &-container {
+    align-items: center;
+    border-radius: 16px;
+    box-shadow: 3px 0px 7px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 0;
+    width: 80%;
+  }
+  &-title {
+    &-container {
+      color: $shared-grey-dark-color;
+      font-size: 1.25rem;
+      margin: 1rem;
+    }
+  }
+  &-content {
+    &-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1rem;
+      width: 100%;
+    }
+  }
+  &-bottom {
+    &-container {
+      display: flex;
+      justify-content: space-around;
+      width: 100%;
+    }
+  }
+}

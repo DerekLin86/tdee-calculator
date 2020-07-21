@@ -11,11 +11,13 @@ import { TdDropdownModule } from '../shared/tools/td-dropdown/td-dropdown.module
 import { TdButtonModule } from '../shared/tools/td-button/td-button.module';
 import { TdRadioButtonGroupModule } from '../shared/tools/td-radio-button-group/td-radio-button-group.module';
 import { SaleforceApiModule } from '../saleforce-api/saleforce-api.module';
+import { BmrAskerModule } from '../bmr-asker/bmr-asker.module';
 
 
 @NgModule({
   declarations: [CalculatorComponent],
   imports: [
+    BmrAskerModule,
     CommonModule,
     FormsModule,
     GenderSelectionModule,
