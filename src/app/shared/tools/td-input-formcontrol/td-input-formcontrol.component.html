@@ -6,8 +6,7 @@
     <input #elm
       matInput
       class="td-input-formcontrol"
-      [type]="option?.type || 'text'"
-      [value]="viewModel?.value || ''"
+      [(ngModel)]="viewModel.value"
       [disabled]="option?.disabled"
     >
   </mat-form-field>

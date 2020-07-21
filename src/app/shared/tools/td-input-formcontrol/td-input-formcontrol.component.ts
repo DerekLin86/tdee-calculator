@@ -1,4 +1,4 @@
-import { Component, forwardRef, OnInit, Input  } from '@angular/core';
+import { Component, forwardRef, OnInit, Input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { TDInputFormcontrol } from './td-input-formcontrol';
@@ -30,7 +30,9 @@ export class TdInputFormcontrolComponent implements ControlValueAccessor, OnInit
     return this._option;
   }
 
-  public viewModel = {} as TDInputFormcontrol.ViewModel;
+  public viewModel = {
+    value: ''
+  } as TDInputFormcontrol.ViewModel;
 
   constructor() { }
 
@@ -38,7 +40,9 @@ export class TdInputFormcontrolComponent implements ControlValueAccessor, OnInit
   }
 
   writeValue(value: TDInputFormcontrol.ViewModel) {
-    this.viewModel = value;
+    if (value) {
+      this.viewModel = value;
+    }
   }
 
   registerOnChange() {}
