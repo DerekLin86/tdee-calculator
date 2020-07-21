@@ -6,7 +6,7 @@
     <app-td-input-formcontrol>基礎代謝率(kcal/day)</app-td-input-formcontrol>
   </div>
   <div class="bmr-asker-bottom-container">
-    <app-td-button>下一步</app-td-button>
-    <app-td-button>不知道</app-td-button>
+    <app-td-button [disabled]="disableNextButton">下一步</app-td-button>
+    <app-td-button (click)="clearInputData()">不知道</app-td-button>
   </div>
 </div>
