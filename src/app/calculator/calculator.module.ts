@@ -12,6 +12,7 @@ import { TdButtonModule } from '../shared/tools/td-button/td-button.module';
 import { TdRadioButtonGroupModule } from '../shared/tools/td-radio-button-group/td-radio-button-group.module';
 import { SaleforceApiModule } from '../saleforce-api/saleforce-api.module';
 import { BmrAskerModule } from '../bmr-asker/bmr-asker.module';
+import { GoalSelectionModule } from '../goal-selection/goal-selection.module';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { BmrAskerModule } from '../bmr-asker/bmr-asker.module';
     TdDropdownModule,
     TdInputFormcontrolModule,
     TdRadioButtonGroupModule,
-    SaleforceApiModule
+    SaleforceApiModule,
+    GoalSelectionModule
   ],
   exports: [CalculatorComponent],
   providers: [CalculatorService]
