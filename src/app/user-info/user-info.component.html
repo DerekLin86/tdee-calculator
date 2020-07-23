@@ -1,1 +1,16 @@
-<p>user-info works!</p>
+<section class="user-info-container">
+  <div class="user-info-title-container">
+    <span>請輸入你的資料</span>
+  </div>
+  <div class="user-info-content-container">
+    <div class="user-info-content-person-icon">P</div>
+    <div class="user-info-left-container">
+      <app-td-input-formcontrol #age>年齡</app-td-input-formcontrol>
+      <app-td-input-formcontrol #height>身高</app-td-input-formcontrol>
+      <app-td-input-formcontrol #weight>體重</app-td-input-formcontrol>
+    </div>
+  </div>
+  <div class="user-info-bottom-container">
+    <app-td-button [disabled]="disableNextButton">下一步</app-td-button>
+  </div>
+</section>

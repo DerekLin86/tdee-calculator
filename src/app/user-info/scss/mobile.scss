@@ -1,0 +1,38 @@
+@import '../../shared/scss/shared-mixin.scss';
+@import '../../shared/scss/shared-color.scss';
+
+:host {
+  @include sharedHostBlock();
+}
+
+.user-info {
+  &-container {
+    @include sharedContainerBlock();
+  }
+  &-title-container {
+    @include sharedTitleBlock();
+  }
+  &-content {
+    &-container {
+      align-items: center;
+      display: flex;
+      justify-content: space-evenly;
+      margin-bottom: 1rem;
+      width: 100%;
+    }
+    &-left-container {
+      display: flex;
+    }
+    &-person-icon {
+      align-items: center;
+      background-color: $shared-grey-dark-color;
+      border-radius: 8px;
+      box-shadow: 3px 0px 7px rgba(0, 0, 0, 0.3);
+      display: flex;
+      font-size: 2rem;
+      height: 100px;
+      justify-content: center;
+      width: 60px;
+    }
+  }
+}
