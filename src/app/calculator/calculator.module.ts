@@ -14,6 +14,7 @@ import { SaleforceApiModule } from '../saleforce-api/saleforce-api.module';
 import { BmrAskerModule } from '../bmr-asker/bmr-asker.module';
 import { GoalSelectionModule } from '../goal-selection/goal-selection.module';
 import { UserInfoModule } from '../user-info/user-info.module';
+import { SportFequencyModule } from '../sport-fequency/sport-fequency.module';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { UserInfoModule } from '../user-info/user-info.module';
     TdRadioButtonGroupModule,
     SaleforceApiModule,
     GoalSelectionModule,
-    UserInfoModule
+    UserInfoModule,
+    SportFequencyModule
   ],
   exports: [CalculatorComponent],
   providers: [CalculatorService]

@@ -1,1 +1,19 @@
-<p>sport-fequency works!</p>
+<section class="sport-fequency-container">
+  <div class="sport-fequency-title-container">
+    <span>你的運動頻率？</span>
+  </div>
+  <div class="sport-fequency-content-container">
+    <div class="sport-fequency-person-icon" #icon>P</div>
+    <div class="sport-fequency-right-container">
+      <div *ngFor="let option of viewModel.raidoOptions; let index = index"
+        class="sport-fequency-option"
+        (click)="selectOption(index)"
+        #optionElm
+      >
+        <div class="sport-fequency-option-icon"></div>
+        <span>{{ option.text }}</span>
+      </div>
+    </div>
+  </div>
+  <app-td-button>下一步</app-td-button>
+</section>
