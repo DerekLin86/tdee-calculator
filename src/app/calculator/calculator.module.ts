@@ -15,6 +15,7 @@ import { BmrAskerModule } from '../bmr-asker/bmr-asker.module';
 import { GoalSelectionModule } from '../goal-selection/goal-selection.module';
 import { UserInfoModule } from '../user-info/user-info.module';
 import { SportFequencyModule } from '../sport-fequency/sport-fequency.module';
+import { CalculationResultModule } from '../calculation-result/calculation-result.module';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { SportFequencyModule } from '../sport-fequency/sport-fequency.module';
   imports: [
     BmrAskerModule,
     CommonModule,
+    CalculationResultModule,
     FormsModule,
     GenderSelectionModule,
     TdButtonModule,
