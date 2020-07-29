@@ -14,6 +14,7 @@ import { ScrollMoveDirective } from '../shared/tools/scroll-move/scroll-move.dir
 import { BmrAskerComponent } from '../bmr-asker/bmr-asker.component';
 import { GoalSelectionComponent } from '../goal-selection/goal-selection.component';
 import { UserInfoComponent } from '../user-info/user-info.component';
+import { SportFequencyComponent } from '../sport-fequency/sport-fequency.component';
 
 @Component({
   selector: 'app-calculator',
@@ -101,6 +102,9 @@ export class CalculatorComponent implements AfterViewInit, OnInit {
 
   @ViewChild(UserInfoComponent, {static: true})
   userInfoComponent: UserInfoComponent;
+
+  @ViewChild(SportFequencyComponent, {static: true})
+  sportFequencyComponent: SportFequencyComponent;
 
   private fakeData = {
     age: 12,

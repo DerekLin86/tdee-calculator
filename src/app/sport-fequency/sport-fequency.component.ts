@@ -1,4 +1,12 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild, ViewChildren, QueryList } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  OnInit,
+  ViewChild,
+  ViewChildren,
+  QueryList
+} from '@angular/core';
 
 import { SportFequency } from './sport-fequency';
 
@@ -43,6 +51,8 @@ export class SportFequencyComponent implements AfterViewInit, OnInit {
   @ViewChild('icon', {static: true})
   iconElm: ElementRef;
 
+  @ViewChild('sportFequency', {static: true})
+  sportFequencyElm: ElementRef;
 
   @ViewChildren('optionElm')
   optionList: QueryList<ElementRef>;

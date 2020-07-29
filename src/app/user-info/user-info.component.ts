@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild,  } from '@angular/core';
 
 import { TdInputFormcontrolComponent } from '../shared/tools/td-input-formcontrol/td-input-formcontrol.component';
 
@@ -8,6 +8,9 @@ import { TdInputFormcontrolComponent } from '../shared/tools/td-input-formcontro
   styleUrls: ['./user-info.component.scss']
 })
 export class UserInfoComponent implements OnInit {
+
+  @Input()
+  submitCallback: () => void;
 
   @ViewChild('age', {static: true})
   ageInputComponent: TdInputFormcontrolComponent;
@@ -32,4 +35,9 @@ export class UserInfoComponent implements OnInit {
   ngOnInit() {
   }
 
+  sumbit() {
+    if (this.submitCallback) {
+      this.submitCallback();
+    }
+  }
 }

@@ -11,6 +11,8 @@
     </div>
   </div>
   <div class="user-info-bottom-container">
-    <app-td-button [disabled]="disableNextButton">下一步</app-td-button>
+    <app-td-button [disabled]="disableNextButton"
+      (click)="sumbit()"
+    >下一步</app-td-button>
   </div>
 </section>
