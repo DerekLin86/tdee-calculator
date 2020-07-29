@@ -1,4 +1,5 @@
 import { Observable } from 'rxjs';
+import { GenderSelection } from '../gender-selection/gender-selection';
 
 export namespace SaleForceAPI {
   export namespace Controller {
@@ -31,7 +32,7 @@ export namespace SaleForceAPI {
       BFP: number;
       BMR: number;
       exeFrequency: number;
-      gender: CalculateTDEE.Gender;
+      gender: GenderSelection.ViewModel.Gender;
       knowBMR: boolean;
       goal: CalculateTDEE.GoalType;
     }
@@ -40,8 +41,6 @@ export namespace SaleForceAPI {
       calorieDeficit: number;
       calorieSurplus: number;
     }
-
-    export type Gender = 'male' | 'female';
 
     export type GoalType = 'bulking' | 'maintain' | 'cutting';
 

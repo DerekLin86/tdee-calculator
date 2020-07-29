@@ -11,6 +11,7 @@ import { CalculatorService } from './calculator.service';
 import { SaleforceApiService } from '../saleforce-api/saleforce-api.service';
 import { SaleForceAPI } from '../saleforce-api/saleforce-api';
 import { ScrollMoveDirective } from '../shared/tools/scroll-move/scroll-move.directive';
+import { GenderSelectionComponent } from '../gender-selection/gender-selection.component';
 import { BmrAskerComponent } from '../bmr-asker/bmr-asker.component';
 import { GoalSelectionComponent } from '../goal-selection/goal-selection.component';
 import { UserInfoComponent } from '../user-info/user-info.component';
@@ -95,6 +96,9 @@ export class CalculatorComponent implements AfterViewInit, OnInit {
   @ViewChild('basicBmr', {static: false})
   tdInputFormcontrolComponent: TdInputFormcontrolComponent;
 
+  @ViewChild(GenderSelectionComponent, {static: true})
+  genderSelectionComponent: GenderSelectionComponent;
+
   @ViewChild(BmrAskerComponent, {static: true})
   bmrAskerComponent: BmrAskerComponent;
 
@@ -154,6 +158,20 @@ export class CalculatorComponent implements AfterViewInit, OnInit {
     ).subscribe((value) => {
       console.info(value);
     });
+  }
+
+  submit() {
+    const postData: SaleForceAPI.CalculateTDEE.Argument = {
+      age: this.userInfoComponent.ageInputComponent.viewModel.value as number,
+      height: this.userInfoComponent.heightInputComponent.viewModel.value as number,
+      weight: this.userInfoComponent.weightInputComponent.viewModel.value as number,
+      BFP: 20,
+      BMR: this.bmrAskerComponent.tdInputFormcontrolComponent.viewModel.value as number || null,
+      exeFrequency: this.sportFequencyComponent.currentSelectedValue,
+      gender: this.genderSelectionComponent.viewModel.currentSelectedOption.option.value,
+      knowBMR: !!this.bmrAskerComponent.tdInputFormcontrolComponent.viewModel,
+      goal: this.goalSelectionComponent.viewModel.currentOption.value
+    };
   }
 
   private initForm() {
