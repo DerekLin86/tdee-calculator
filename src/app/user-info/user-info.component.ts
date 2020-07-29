@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 
 import { TdInputFormcontrolComponent } from '../shared/tools/td-input-formcontrol/td-input-formcontrol.component';
 
@@ -17,6 +17,9 @@ export class UserInfoComponent implements OnInit {
 
   @ViewChild('weight', {static: true})
   weightInputComponent: TdInputFormcontrolComponent;
+
+  @ViewChild('userInfo', {static: true})
+  userInfoElm: ElementRef;
 
   get disableNextButton() {
     return this.ageInputComponent.viewModel.value.toString().length <= 0 ||

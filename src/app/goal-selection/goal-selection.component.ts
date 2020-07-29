@@ -1,4 +1,13 @@
-import { AfterViewInit, Component, OnInit, ViewChild, ViewChildren, ElementRef, QueryList } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  Input,
+  OnInit,
+  ViewChild,
+  ViewChildren,
+  QueryList
+} from '@angular/core';
 
 import { GoalSelection } from './goal-selection';
 
@@ -31,6 +40,9 @@ export class GoalSelectionComponent implements AfterViewInit, OnInit {
     }
   };
 
+  @Input()
+  submitCallback: () => void;
+
   @ViewChild('goalSelection', {static: true})
   goalSelectionElm: ElementRef;
 
@@ -44,6 +56,13 @@ export class GoalSelectionComponent implements AfterViewInit, OnInit {
 
   ngAfterViewInit() {
     this.initialOption();
+  }
+
+  click(option: GoalSelection.Option, index: number) {
+    this.selectOption(option, index);
+    if (this.submitCallback) {
+      this.submitCallback();
+    }
   }
 
   selectOption(option: GoalSelection.Option, index: number) {
@@ -65,6 +84,7 @@ export class GoalSelectionComponent implements AfterViewInit, OnInit {
 
     this.viewModel.currentOption = option;
     this.viewModel.currentOptionIndex = index;
+
   }
 
   private initialOption() {

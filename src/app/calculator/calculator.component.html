@@ -9,7 +9,9 @@
   <app-bmr-asker
     [submitCallback]="scrollMoveDirective.moveToElement.bind(scrollMoveDirective, {elementRef: goalSelectionComponent.goalSelectionElm})"
   ></app-bmr-asker>
-  <app-goal-selection></app-goal-selection>
+  <app-goal-selection
+    [submitCallback]="scrollMoveDirective.moveToElement.bind(scrollMoveDirective, {elementRef: userInfoComponent.userInfoElm})"
+  ></app-goal-selection>
   <app-user-info></app-user-info>
   <app-sport-fequency></app-sport-fequency>
   <app-calculation-result></app-calculation-result>

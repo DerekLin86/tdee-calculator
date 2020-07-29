@@ -5,7 +5,7 @@
   <div class="goal-selection-content-container">
     <div *ngFor="let option of options; let index = index"
       class="goal-selection-content-item-container"
-      (click)="selectOption(option, index)"
+      (click)="click(option, index)"
       #optionElm
     >
       <div class="goal-selection-content-item"></div>
