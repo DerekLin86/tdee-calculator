@@ -18,7 +18,9 @@
   <app-sport-fequency
     [submitCallback]="scrollMoveDirective.moveToElement.bind(scrollMoveDirective, {elementRef: calculationResultComponent.calculationResultElm})"
   ></app-sport-fequency>
-  <app-calculation-result></app-calculation-result>
+  <app-calculation-result
+    [submitCallback]="submit.bind(this)"
+  ></app-calculation-result>
 
   <!-- <div class="calculator-basic-info-container">
     <span class="calculator-basic-info-title">基本資料</span>

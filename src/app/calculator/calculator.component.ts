@@ -152,9 +152,9 @@ export class CalculatorComponent implements AfterViewInit, OnInit {
     this.updateBasicBmrInputOption();
   }
 
-  calculateTDEE() {
+  calculateTDEE(postData: SaleForceAPI.CalculateTDEE.Argument) {
     this.calculatorService.calculateTdee(
-      this.fakeData
+      postData
     ).subscribe((value) => {
       console.info(value);
     });
@@ -168,10 +168,19 @@ export class CalculatorComponent implements AfterViewInit, OnInit {
       BFP: 20,
       BMR: this.bmrAskerComponent.tdInputFormcontrolComponent.viewModel.value as number || null,
       exeFrequency: this.sportFequencyComponent.currentSelectedValue,
-      gender: this.genderSelectionComponent.viewModel.currentSelectedOption.option.value,
+      gender: this.genderSelectionComponent.viewModel.currentSelectedOption ?
+        this.genderSelectionComponent.viewModel.currentSelectedOption.option.value :
+        null,
       knowBMR: !!this.bmrAskerComponent.tdInputFormcontrolComponent.viewModel,
-      goal: this.goalSelectionComponent.viewModel.currentOption.value
+      goal: this.goalSelectionComponent.viewModel.currentOption ?
+        this.goalSelectionComponent.viewModel.currentOption.value :
+        null
     };
+
+    this.calculatorService.calculateTdee(postData)
+      .subscribe((data) => {
+        console.info(data);
+      });
   }
 
   private initForm() {

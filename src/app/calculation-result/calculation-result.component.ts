@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-calculation-result',
@@ -6,6 +6,9 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
   styleUrls: ['./calculation-result.component.scss']
 })
 export class CalculationResultComponent implements OnInit {
+
+  @Input()
+  submitCallback: () => void;
 
   @ViewChild('calculationResult', {static: true})
   calculationResultElm: ElementRef;
@@ -15,4 +18,9 @@ export class CalculationResultComponent implements OnInit {
   ngOnInit() {
   }
 
+  submit() {
+    if (this.submitCallback) {
+      this.submitCallback();
+    }
+  }
 }
