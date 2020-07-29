@@ -5,7 +5,7 @@
   <div class="gender-selection-content-container">
     <div *ngFor="let option of viewModel.options; let index = index"
       class="gender-selection-item"
-      (click)="selectOption(option, index)"
+      (click)="click(option, index)"
       #genderItem
     >
       {{ option.text }}

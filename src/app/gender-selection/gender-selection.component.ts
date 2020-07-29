@@ -41,6 +41,13 @@ export class GenderSelectionComponent implements AfterViewInit, OnInit {
     this.initOption();
   }
 
+  click(option: GenderSelection.ViewModel.Option, index: number) {
+    this.selectOption(option, index);
+    if (this.submitCallback) {
+      this.submitCallback();
+    }
+  }
+
   selectOption(option: GenderSelection.ViewModel.Option, index: number) {
     const targetElement = this.genderItemArray.toArray()[index].nativeElement as HTMLElement;
 
@@ -60,10 +67,6 @@ export class GenderSelectionComponent implements AfterViewInit, OnInit {
       elemenet: targetElement,
       option
     };
-
-    if (this.submitCallback) {
-      this.submitCallback();
-    }
   }
 
   private initOption() {
