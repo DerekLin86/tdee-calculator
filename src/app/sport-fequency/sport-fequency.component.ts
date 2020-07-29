@@ -2,6 +2,7 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
+  Input,
   OnInit,
   ViewChild,
   ViewChildren,
@@ -48,6 +49,9 @@ export class SportFequencyComponent implements AfterViewInit, OnInit {
     }
   };
 
+  @Input()
+  submitCallback: () => void;
+
   @ViewChild('icon', {static: true})
   iconElm: ElementRef;
 
@@ -64,6 +68,12 @@ export class SportFequencyComponent implements AfterViewInit, OnInit {
 
   ngAfterViewInit() {
     this.initOption();
+  }
+
+  submit() {
+    if (this.submitCallback) {
+      this.submitCallback();
+    }
   }
 
   selectOption(index: number) {

@@ -15,6 +15,7 @@ import { BmrAskerComponent } from '../bmr-asker/bmr-asker.component';
 import { GoalSelectionComponent } from '../goal-selection/goal-selection.component';
 import { UserInfoComponent } from '../user-info/user-info.component';
 import { SportFequencyComponent } from '../sport-fequency/sport-fequency.component';
+import { CalculationResultComponent } from '../calculation-result/calculation-result.component';
 
 @Component({
   selector: 'app-calculator',
@@ -105,6 +106,9 @@ export class CalculatorComponent implements AfterViewInit, OnInit {
 
   @ViewChild(SportFequencyComponent, {static: true})
   sportFequencyComponent: SportFequencyComponent;
+
+  @ViewChild(CalculationResultComponent, {static: true})
+  calculationResultComponent: CalculationResultComponent;
 
   private fakeData = {
     age: 12,
