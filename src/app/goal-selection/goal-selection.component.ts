@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChildren, ElementRef, QueryList } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild, ViewChildren, ElementRef, QueryList } from '@angular/core';
 
 import { GoalSelection } from './goal-selection';
 
@@ -30,6 +30,9 @@ export class GoalSelectionComponent implements AfterViewInit, OnInit {
       selected: 'selected'
     }
   };
+
+  @ViewChild('goalSelection', {static: true})
+  goalSelectionElm: ElementRef;
 
   @ViewChildren('optionElm')
   optionElmList: QueryList<ElementRef>;

@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 
 import { TdInputFormcontrolComponent } from '../shared/tools/td-input-formcontrol/td-input-formcontrol.component';
 
@@ -8,6 +8,9 @@ import { TdInputFormcontrolComponent } from '../shared/tools/td-input-formcontro
   styleUrls: ['./bmr-asker.component.scss']
 })
 export class BmrAskerComponent implements OnInit {
+
+  @Input()
+  submitCallback: () => void;
 
   @ViewChild(TdInputFormcontrolComponent, {static: true})
   tdInputFormcontrolComponent: TdInputFormcontrolComponent;
@@ -28,6 +31,14 @@ export class BmrAskerComponent implements OnInit {
   clearInputData() {
     if (this.tdInputFormcontrolComponent) {
       this.tdInputFormcontrolComponent.viewModel.value = '';
+    }
+
+    this.submit();
+  }
+
+  submit() {
+    if (this.submitCallback) {
+      this.submitCallback();
     }
   }
 

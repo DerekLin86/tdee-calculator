@@ -12,6 +12,7 @@ import { SaleforceApiService } from '../saleforce-api/saleforce-api.service';
 import { SaleForceAPI } from '../saleforce-api/saleforce-api';
 import { ScrollMoveDirective } from '../shared/tools/scroll-move/scroll-move.directive';
 import { BmrAskerComponent } from '../bmr-asker/bmr-asker.component';
+import { GoalSelectionComponent } from '../goal-selection/goal-selection.component';
 
 @Component({
   selector: 'app-calculator',
@@ -93,6 +94,9 @@ export class CalculatorComponent implements AfterViewInit, OnInit {
 
   @ViewChild(BmrAskerComponent, {static: true})
   bmrAskerComponent: BmrAskerComponent;
+
+  @ViewChild(GoalSelectionComponent, {static: true})
+  goalSelectionComponent: GoalSelectionComponent;
 
   private fakeData = {
     age: 12,
