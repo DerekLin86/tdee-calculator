@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChildren, QueryList } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChildren, QueryList } from '@angular/core';
 
 import { GenderSelection } from './gender-selection';
 
@@ -25,6 +25,9 @@ export class GenderSelectionComponent implements AfterViewInit, OnInit {
       selected: 'selected'
     }
   };
+
+  @Input()
+  submitCallback: () => void;
 
   @ViewChildren('genderItem')
   genderItemArray: QueryList<ElementRef>;
@@ -57,6 +60,10 @@ export class GenderSelectionComponent implements AfterViewInit, OnInit {
       elemenet: targetElement,
       option
     };
+
+    if (this.submitCallback) {
+      this.submitCallback();
+    }
   }
 
   private initOption() {

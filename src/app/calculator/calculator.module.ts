@@ -16,6 +16,7 @@ import { GoalSelectionModule } from '../goal-selection/goal-selection.module';
 import { UserInfoModule } from '../user-info/user-info.module';
 import { SportFequencyModule } from '../sport-fequency/sport-fequency.module';
 import { CalculationResultModule } from '../calculation-result/calculation-result.module';
+import { ScrollMoveModule } from '../shared/tools/scroll-move/scroll-move.module';
 
 
 @NgModule({
@@ -35,9 +36,12 @@ import { CalculationResultModule } from '../calculation-result/calculation-resul
     SaleforceApiModule,
     GoalSelectionModule,
     UserInfoModule,
-    SportFequencyModule
+    SportFequencyModule,
+    ScrollMoveModule
   ],
   exports: [CalculatorComponent],
-  providers: [CalculatorService]
+  providers: [
+    CalculatorService
+  ]
 })
 export class CalculatorModule { }

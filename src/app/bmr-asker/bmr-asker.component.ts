@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 import { TdInputFormcontrolComponent } from '../shared/tools/td-input-formcontrol/td-input-formcontrol.component';
 
@@ -11,6 +11,9 @@ export class BmrAskerComponent implements OnInit {
 
   @ViewChild(TdInputFormcontrolComponent, {static: true})
   tdInputFormcontrolComponent: TdInputFormcontrolComponent;
+
+  @ViewChild('bmrAsker', {static: true})
+  bmrAskerElm: ElementRef;
 
   get disableNextButton() {
     return this.tdInputFormcontrolComponent &&

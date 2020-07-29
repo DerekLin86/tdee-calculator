@@ -3,7 +3,9 @@
     <span>計算每日熱量及營養素攝取</span>
   </div>
 
-  <app-gender-selection></app-gender-selection>
+  <app-gender-selection
+    [submitCallback]="scrollMoveDirective.moveToElement.bind(scrollMoveDirective, {elementRef: bmrAskerComponent.bmrAskerElm})"
+  ></app-gender-selection>
   <app-bmr-asker></app-bmr-asker>
   <app-goal-selection></app-goal-selection>
   <app-user-info></app-user-info>

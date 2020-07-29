@@ -10,6 +10,8 @@ import { Calculator } from './calculator';
 import { CalculatorService } from './calculator.service';
 import { SaleforceApiService } from '../saleforce-api/saleforce-api.service';
 import { SaleForceAPI } from '../saleforce-api/saleforce-api';
+import { ScrollMoveDirective } from '../shared/tools/scroll-move/scroll-move.directive';
+import { BmrAskerComponent } from '../bmr-asker/bmr-asker.component';
 
 @Component({
   selector: 'app-calculator',
@@ -89,6 +91,9 @@ export class CalculatorComponent implements AfterViewInit, OnInit {
   @ViewChild('basicBmr', {static: false})
   tdInputFormcontrolComponent: TdInputFormcontrolComponent;
 
+  @ViewChild(BmrAskerComponent, {static: true})
+  bmrAskerComponent: BmrAskerComponent;
+
   private fakeData = {
     age: 12,
     height: 186,
@@ -103,6 +108,7 @@ export class CalculatorComponent implements AfterViewInit, OnInit {
 
 
   constructor(
+    public scrollMoveDirective: ScrollMoveDirective,
     private calculatorService: CalculatorService,
     private formBuilder: FormBuilder,
     private saleforceApiService: SaleforceApiService
