@@ -1,12 +1,15 @@
 import { Injectable } from '@angular/core';
-import { of, Observable } from 'rxjs';
+import { BehaviorSubject, of, Observable } from 'rxjs';
 
 import { TdDrowdown } from '../shared/tools/td-dropdown/td-dropdown';
 import { SaleForceAPI } from '../saleforce-api/saleforce-api';
 import { SaleforceApiService } from '../saleforce-api/saleforce-api.service';
+import { Calculator } from './calculator';
 
 @Injectable()
 export class CalculatorService {
+
+  public tdeeResult$ = new BehaviorSubject<Calculator.TDEE.Result>(null);
 
   constructor(
     private saleforceApiService: SaleforceApiService

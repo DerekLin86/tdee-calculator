@@ -15,4 +15,24 @@
       @include sharedTitleBlock();
     }
   }
+  &-content {
+    &-container {
+      margin-bottom: 1.5rem;
+    }
+  }
+  &-summary {
+    &-container {
+      background-color: $shared-green-light-color;
+      border-radius: 46px;
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      padding: 1rem;
+      width: 80%;
+    }
+    &-title {
+      color: $shared-grey-dark-color;
+      font-size: 1.25rem;
+    }
+  }
 }

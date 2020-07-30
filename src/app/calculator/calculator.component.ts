@@ -129,7 +129,7 @@ export class CalculatorComponent implements AfterViewInit, OnInit {
 
   constructor(
     public scrollMoveDirective: ScrollMoveDirective,
-    private calculatorService: CalculatorService,
+    public calculatorService: CalculatorService,
     private formBuilder: FormBuilder,
     private saleforceApiService: SaleforceApiService
   ) { }
@@ -180,6 +180,13 @@ export class CalculatorComponent implements AfterViewInit, OnInit {
     this.calculatorService.calculateTdee(postData)
       .subscribe((data) => {
         console.info(data);
+        this.calculatorService.tdeeResult$.next({
+          TDEE: data.TDEE,
+          targetCarbIntake: data.targetCarbIntake,
+          targetFatIntake: data.targetFatIntake,
+          targetIntake: data.targetIntake,
+          targetProteinIntake: data.targetProteinIntake
+        });
       });
   }
 

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { CalculationResultComponent } from './calculation-result.component';
 import { TdButtonModule } from '../shared/tools/td-button/td-button.module';
+import { TdInputFormcontrolModule } from '../shared/tools/td-input-formcontrol/td-input-formcontrol.module';
 
 
 
@@ -10,7 +11,8 @@ import { TdButtonModule } from '../shared/tools/td-button/td-button.module';
   declarations: [CalculationResultComponent],
   imports: [
     CommonModule,
-    TdButtonModule
+    TdButtonModule,
+    TdInputFormcontrolModule
   ],
   exports: [
     CalculationResultComponent

@@ -20,6 +20,7 @@
   ></app-sport-fequency>
   <app-calculation-result
     [submitCallback]="submit.bind(this)"
+    [result]="calculatorService.tdeeResult$.value"
   ></app-calculation-result>
 
   <!-- <div class="calculator-basic-info-container">

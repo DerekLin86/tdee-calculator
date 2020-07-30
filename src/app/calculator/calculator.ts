@@ -21,4 +21,14 @@ export namespace Calculator {
       [key in keyof Calculator.FormField.DropdownField]: any;
     }
   }
+
+  export namespace TDEE {
+    export interface Result {
+      TDEE: number;
+      targetCarbIntake: number;
+      targetFatIntake: number;
+      targetIntake: number;
+      targetProteinIntake: number;
+    }
+  }
 }
