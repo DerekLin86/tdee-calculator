@@ -30,6 +30,9 @@ export class TdInputFormcontrolComponent implements ControlValueAccessor, OnInit
     return this._option;
   }
 
+  @Input()
+  disabled: boolean;
+
   public viewModel = {
     value: ''
   } as TDInputFormcontrol.ViewModel;
