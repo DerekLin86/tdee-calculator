@@ -2,7 +2,7 @@
   <div class="calculation-result-title-container">
     <span>開始計算你的TDEE!</span>
   </div>
-  <div class="calculation-result-content-container">
+  <div class="calculation-result-content-container" #resultBlock>
     <app-td-button (click)="submit()">計算</app-td-button>
   </div>
   <ng-container *ngIf="result">

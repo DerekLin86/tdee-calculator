@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 
 import { Calculator } from '../calculator/calculator';
 import { CalculationResult } from './calculation-result';
+import { ScrollMoveDirective } from '../shared/tools/scroll-move/scroll-move.directive';
 
 @Component({
   selector: 'app-calculation-result',
@@ -36,12 +37,25 @@ export class CalculationResultComponent implements OnInit {
   @ViewChild('calculationResult', {static: true})
   calculationResultElm: ElementRef;
 
+  @ViewChild('resultBlock', {static: true})
+  resultBlockElm: ElementRef;
+
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private scrollMoveDirective: ScrollMoveDirective
   ) { }
 
   ngOnInit() {
     this.initForm();
+  }
+
+  submit() {
+    if (this.submitCallback) {
+      this.submitCallback();
+      setTimeout(() => {
+        this.navigateToResult();
+      }, 1000);
+    }
   }
 
   private initForm() {
@@ -57,9 +71,11 @@ export class CalculationResultComponent implements OnInit {
     this.resultform.disable();
   }
 
-  submit() {
-    if (this.submitCallback) {
-      this.submitCallback();
+  private navigateToResult() {
+    if (this.resultBlockElm) {
+      this.scrollMoveDirective.moveToElement({
+        elementRef: this.resultBlockElm
+      });
     }
   }
 }
