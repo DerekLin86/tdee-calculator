@@ -52,4 +52,7 @@ export class TdInputFormcontrolComponent implements ControlValueAccessor, OnInit
 
   registerOnTouched() {}
 
+  setDisabledState(disabled: boolean) {
+    this.disabled = disabled;
+  }
 }
