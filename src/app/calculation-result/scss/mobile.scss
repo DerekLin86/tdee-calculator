@@ -3,6 +3,8 @@
 
 :host {
   @include sharedHostBlock();
+  height: auto;
+  min-height: 24rem;
 }
 
 .calculation-result {

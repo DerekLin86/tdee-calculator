@@ -2,6 +2,7 @@
 
 @mixin sharedHostBlock() {
   display: flex;
+  height: 24rem;
   justify-content: center;
   margin-bottom: 1rem;
   width: 100%;
@@ -21,4 +22,11 @@
   color: $shared-grey-dark-color;
   font-size: 1.25rem;
   margin: 1rem;
+}
+
+@mixin contentContainer {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  width: 100%;
 }

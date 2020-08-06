@@ -27,9 +27,8 @@
   }
   &-content {
     &-container {
-      display: flex;
+      @include contentContainer();
       justify-content: space-evenly;
-      width: 100%;
     }
     &-item {
       border: 1px solid $shared-grey-dark-color;
