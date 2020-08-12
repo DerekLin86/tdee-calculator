@@ -57,9 +57,10 @@ export class ScrollMoveDirective implements OnInit {
       elem,
       position: 'Top'
     });
+    const headerHeight = 64;
 
     this.move({
-      y: offsetTopOfDocument
+      y: offsetTopOfDocument - headerHeight
     });
 
     // if (this.browserService.isMobile && this.browserService.isAndroid) {
