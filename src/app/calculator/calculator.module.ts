@@ -17,6 +17,7 @@ import { UserInfoModule } from '../user-info/user-info.module';
 import { SportFequencyModule } from '../sport-fequency/sport-fequency.module';
 import { CalculationResultModule } from '../calculation-result/calculation-result.module';
 import { ScrollMoveModule } from '../shared/tools/scroll-move/scroll-move.module';
+import { FatrAskerModule } from '../fatr-asker/fatr-asker.module';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { ScrollMoveModule } from '../shared/tools/scroll-move/scroll-move.module
     BmrAskerModule,
     CommonModule,
     CalculationResultModule,
+    FatrAskerModule,
     FormsModule,
     GenderSelectionModule,
     TdButtonModule,
