@@ -1,0 +1,24 @@
+@import '../../shared/scss/shared-color.scss';
+@import '../../shared/scss/shared-mixin.scss';
+
+:host {
+  @include sharedHostBlock();
+}
+
+.fatr-asker {
+  &-container {
+    @include sharedContainerBlock();
+  }
+  &-title {
+    &-container {
+      @include sharedTitleBlock();
+    }
+  }
+  &-content {
+    &-container {
+      @include contentContainer();
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+  }
+}
