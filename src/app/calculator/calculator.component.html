@@ -7,9 +7,11 @@
     [submitCallback]="scrollMoveDirective.moveToElement.bind(scrollMoveDirective, {elementRef: bmrAskerComponent.bmrAskerElm})"
   ></app-gender-selection>
   <app-bmr-asker
-    [submitCallback]="scrollMoveDirective.moveToElement.bind(scrollMoveDirective, {elementRef: goalSelectionComponent.goalSelectionElm})"
+    [submitCallback]="scrollMoveDirective.moveToElement.bind(scrollMoveDirective, {elementRef: fatrAskerComponent.fatrAskerElm})"
   ></app-bmr-asker>
-  <app-fatr-asker></app-fatr-asker>
+  <app-fatr-asker
+  [submitCallback]="scrollMoveDirective.moveToElement.bind(scrollMoveDirective, {elementRef: goalSelectionComponent.goalSelectionElm})"
+  ></app-fatr-asker>
   <app-goal-selection
     [submitCallback]="scrollMoveDirective.moveToElement.bind(scrollMoveDirective, {elementRef: userInfoComponent.userInfoElm})"
   ></app-goal-selection>

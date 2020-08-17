@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-fatr-asker',
@@ -7,9 +7,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FatrAskerComponent implements OnInit {
 
+  @Input()
+  submitCallback: () => void;
+
+  @ViewChild('fatrAsker', {static: true})
+  fatrAskerElm: ElementRef;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  submit() {
+    if (this.submitCallback) {
+      this.submitCallback();
+    }
   }
 
 }
