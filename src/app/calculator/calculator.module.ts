@@ -19,6 +19,7 @@ import { CalculationResultModule } from '../calculation-result/calculation-resul
 import { ScrollMoveModule } from '../shared/tools/scroll-move/scroll-move.module';
 import { FatrAskerModule } from '../fatr-asker/fatr-asker.module';
 import { AllergyModule } from '../allergy/allergy.module';
+import { GymModule } from '../gym/gym.module';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { AllergyModule } from '../allergy/allergy.module';
     FatrAskerModule,
     FormsModule,
     GenderSelectionModule,
+    GymModule,
     TdButtonModule,
     MatInputModule,
     ReactiveFormsModule,
