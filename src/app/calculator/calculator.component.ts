@@ -18,6 +18,7 @@ import { UserInfoComponent } from '../user-info/user-info.component';
 import { SportFequencyComponent } from '../sport-fequency/sport-fequency.component';
 import { CalculationResultComponent } from '../calculation-result/calculation-result.component';
 import { FatrAskerComponent } from '../fatr-asker/fatr-asker.component';
+import { AllergyComponent } from '../allergy/allergy.component';
 
 @Component({
   selector: 'app-calculator',
@@ -104,13 +105,16 @@ export class CalculatorComponent implements AfterViewInit, OnInit {
   bmrAskerComponent: BmrAskerComponent;
 
   @ViewChild(FatrAskerComponent, {static: true})
-  fatrAskerComponent: FatrAskerComponent
+  fatrAskerComponent: FatrAskerComponent;
 
   @ViewChild(GoalSelectionComponent, {static: true})
   goalSelectionComponent: GoalSelectionComponent;
 
   @ViewChild(UserInfoComponent, {static: true})
   userInfoComponent: UserInfoComponent;
+
+  @ViewChild(AllergyComponent, {static: true})
+  allergyComponent: AllergyComponent;
 
   @ViewChild(SportFequencyComponent, {static: true})
   sportFequencyComponent: SportFequencyComponent;

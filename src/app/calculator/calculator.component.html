@@ -13,14 +13,17 @@
   [submitCallback]="scrollMoveDirective.moveToElement.bind(scrollMoveDirective, {elementRef: goalSelectionComponent.goalSelectionElm})"
   ></app-fatr-asker>
   <app-goal-selection
-    [submitCallback]="scrollMoveDirective.moveToElement.bind(scrollMoveDirective, {elementRef: userInfoComponent.userInfoElm})"
-  ></app-goal-selection>
-  <app-user-info
     [submitCallback]="scrollMoveDirective.moveToElement.bind(scrollMoveDirective, {elementRef: sportFequencyComponent.sportFequencyElm})"
-  ></app-user-info>
+  ></app-goal-selection>
   <app-sport-fequency
-    [submitCallback]="scrollMoveDirective.moveToElement.bind(scrollMoveDirective, {elementRef: calculationResultComponent.calculationResultElm})"
+    [submitCallback]="scrollMoveDirective.moveToElement.bind(scrollMoveDirective, {elementRef: userInfoComponent.userInfoElm})"
   ></app-sport-fequency>
+  <app-user-info
+    [submitCallback]="scrollMoveDirective.moveToElement.bind(scrollMoveDirective, {elementRef: allergyComponent.allergyElm})"
+  ></app-user-info>
+  <app-allergy
+    [submitCallback]="scrollMoveDirective.moveToElement.bind(scrollMoveDirective, {elementRef: sportFequencyComponent.sportFequencyElm})"
+  ></app-allergy>
   <app-calculation-result
     [submitCallback]="submit.bind(this)"
     [result]="calculatorService.tdeeResult$.value"

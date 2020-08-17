@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-allergy',
@@ -7,9 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AllergyComponent implements OnInit {
 
+  @Input()
+  submitCallback: () => void;
+
+  @ViewChild('allergy', {static: true})
+  allergyElm: ElementRef;
+
   constructor() { }
 
   ngOnInit() {
   }
 
+  submit() {
+    if (this.submitCallback) {
+      this.submitCallback();
+    }
+  }
 }
