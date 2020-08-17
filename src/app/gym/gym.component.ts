@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-gym',
@@ -7,9 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GymComponent implements OnInit {
 
+  @Input()
+  submitCallback: () => void;
+
+  @ViewChild('gym', {static: true})
+  gymElm: ElementRef;
+
   constructor() { }
 
   ngOnInit() {
   }
 
+  submit() {
+    if (this.submitCallback) {
+      this.submitCallback();
+    }
+  }
 }

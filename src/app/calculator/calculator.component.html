@@ -22,8 +22,9 @@
     [submitCallback]="scrollMoveDirective.moveToElement.bind(scrollMoveDirective, {elementRef: allergyComponent.allergyElm})"
   ></app-user-info>
   <app-allergy
-    [submitCallback]="scrollMoveDirective.moveToElement.bind(scrollMoveDirective, {elementRef: sportFequencyComponent.sportFequencyElm})"
+    [submitCallback]="scrollMoveDirective.moveToElement.bind(scrollMoveDirective, {elementRef: gymComponent.gymElm})"
   ></app-allergy>
+  <app-gym [submitCallback]="submit.bind(this)"></app-gym>
   <app-calculation-result
     [submitCallback]="submit.bind(this)"
     [result]="calculatorService.tdeeResult$.value"
