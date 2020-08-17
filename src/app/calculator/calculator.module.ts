@@ -18,11 +18,13 @@ import { SportFequencyModule } from '../sport-fequency/sport-fequency.module';
 import { CalculationResultModule } from '../calculation-result/calculation-result.module';
 import { ScrollMoveModule } from '../shared/tools/scroll-move/scroll-move.module';
 import { FatrAskerModule } from '../fatr-asker/fatr-asker.module';
+import { AllergyModule } from '../allergy/allergy.module';
 
 
 @NgModule({
   declarations: [CalculatorComponent],
   imports: [
+    AllergyModule,
     BmrAskerModule,
     CommonModule,
     CalculationResultModule,
