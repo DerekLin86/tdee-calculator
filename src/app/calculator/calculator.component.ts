@@ -199,6 +199,11 @@ export class CalculatorComponent implements AfterViewInit, OnInit {
           targetIntake: data.targetIntake,
           targetProteinIntake: data.targetProteinIntake
         });
+        setTimeout(() => {
+          this.scrollMoveDirective.moveToElement({
+            elementRef: this.calculationResultComponent.calculationResultElm
+          });
+        }, 1000);
       });
   }
 

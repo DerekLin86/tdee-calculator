@@ -17,9 +17,6 @@ export class CalculationResultComponent implements OnInit {
   private _result: Calculator.TDEE.Result = null ;
 
   @Input()
-  submitCallback: () => void;
-
-  @Input()
   set result(data: Calculator.TDEE.Result) {
     if (data) {
       Object.keys(data).forEach((key) => {
@@ -34,28 +31,15 @@ export class CalculationResultComponent implements OnInit {
     return this._result;
   }
 
-  @ViewChild('calculationResult', {static: true})
+  @ViewChild('calculationResult', {static: false})
   calculationResultElm: ElementRef;
 
-  @ViewChild('resultBlock', {static: true})
-  resultBlockElm: ElementRef;
-
   constructor(
-    private formBuilder: FormBuilder,
-    private scrollMoveDirective: ScrollMoveDirective
+    private formBuilder: FormBuilder
   ) { }
 
   ngOnInit() {
     this.initForm();
-  }
-
-  submit() {
-    if (this.submitCallback) {
-      this.submitCallback();
-      setTimeout(() => {
-        this.navigateToResult();
-      }, 1000);
-    }
   }
 
   private initForm() {
@@ -69,13 +53,5 @@ export class CalculationResultComponent implements OnInit {
 
     this.resultform = this.formBuilder.group(defaultFormData);
     this.resultform.disable();
-  }
-
-  private navigateToResult() {
-    if (this.resultBlockElm) {
-      this.scrollMoveDirective.moveToElement({
-        elementRef: this.resultBlockElm
-      });
-    }
   }
 }
