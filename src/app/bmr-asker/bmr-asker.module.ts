@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { BmrAskerComponent } from './bmr-asker.component';
 import { TdInputFormcontrolModule } from '../shared/tools/td-input-formcontrol/td-input-formcontrol.module';
 import { TdButtonModule } from '../shared/tools/td-button/td-button.module';
+import { TdTipsModule } from '../shared/tools/td-tips/td-tips.module';
 
 
 
@@ -11,7 +12,8 @@ import { TdButtonModule } from '../shared/tools/td-button/td-button.module';
   imports: [
     CommonModule,
     TdButtonModule,
-    TdInputFormcontrolModule
+    TdInputFormcontrolModule,
+    TdTipsModule
   ],
   exports: [
     BmrAskerComponent

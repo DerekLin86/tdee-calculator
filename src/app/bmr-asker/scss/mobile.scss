@@ -22,10 +22,17 @@
       margin-bottom: 1rem;
     }
   }
-  &-bottom {
+  &-button {
     &-container {
       display: flex;
       justify-content: space-around;
+      width: 100%;
+    }
+  }
+  &-bottom {
+    &-container {
+      height: 100%;
+      margin-top: 2rem;
       width: 100%;
     }
   }

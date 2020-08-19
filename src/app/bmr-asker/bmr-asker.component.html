@@ -5,8 +5,11 @@
   <div class="bmr-asker-content-container">
     <app-td-input-formcontrol>基礎代謝率(kcal/day)</app-td-input-formcontrol>
   </div>
-  <div class="bmr-asker-bottom-container">
+  <div class="bmr-asker-button-container">
     <app-td-button [disabled]="disableNextButton" (click)="submit()">下一步</app-td-button>
     <app-td-button (click)="clearInputData()">不知道</app-td-button>
+  </div>
+  <div class="bmr-asker-bottom-container">
+    <app-td-tips></app-td-tips>
   </div>
 </div>
