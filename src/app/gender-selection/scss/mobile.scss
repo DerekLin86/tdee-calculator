@@ -16,7 +16,9 @@
   &-content {
     &-container {
       @include contentContainer();
+      align-items: flex-start;
       justify-content: space-evenly;
+      padding-top: 2rem;
     }
   }
   &-item {
