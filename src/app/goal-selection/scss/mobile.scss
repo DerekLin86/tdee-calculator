@@ -29,6 +29,7 @@
     &-container {
       @include contentContainer();
       justify-content: space-evenly;
+      height: 80%;
     }
     &-item {
       border: 1px solid $shared-grey-dark-color;
@@ -47,6 +48,12 @@
         align-items: center;
         justify-content: center;
       }
+    }
+  }
+  &-bottom {
+    &-container {
+      height: 100%;
+      width: 100%;
     }
   }
 }
