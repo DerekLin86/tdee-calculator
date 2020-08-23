@@ -15,6 +15,7 @@
   &-content {
     &-container {
       @include contentContainer();
+      height: 40%;
       justify-content: space-evenly;
       margin-bottom: 1rem;
     }
