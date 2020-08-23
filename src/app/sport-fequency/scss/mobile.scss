@@ -79,6 +79,13 @@
     justify-content: center;
     width: 60px;
   }
+  &-bottom {
+    &-container {
+      height: 300px;
+      margin-top: 2rem;
+      width: 100%;
+    }
+  }
 }
 
 @include selectedOption();
