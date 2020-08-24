@@ -184,9 +184,9 @@ export class CalculatorComponent implements AfterViewInit, OnInit {
         this.genderSelectionComponent.viewModel.currentSelectedOption.option.value :
         null,
       knowBMR: !!this.bmrAskerComponent.tdInputFormcontrolComponent.viewModel,
-      goal: this.goalSelectionComponent.viewModel.currentOption ?
-        this.goalSelectionComponent.viewModel.currentOption.value :
-        null
+      goal: this.goalSelectionComponent.viewModel.currentValue ?
+        this.goalSelectionComponent.viewModel.currentValue :
+        null as SaleForceAPI.CalculateTDEE.GoalType
     };
 
     this.calculatorService.calculateTdee(postData)

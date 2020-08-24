@@ -1,5 +1,4 @@
 import {
-  AfterViewInit,
   Component,
   ElementRef,
   Input,
@@ -9,35 +8,33 @@ import {
   QueryList
 } from '@angular/core';
 
-import { GoalSelection } from './goal-selection';
+import { SaleForceAPI } from '../saleforce-api/saleforce-api';
+import { TdRadioButtonGroup } from '../shared/tools/td-radio-button-group/td-radio-button-group';
+import { TdRadioButtonGroupComponent } from '../shared/tools/td-radio-button-group/td-radio-button-group.component';
 
 @Component({
   selector: 'app-goal-selection',
   templateUrl: './goal-selection.component.html',
   styleUrls: ['./goal-selection.component.scss']
 })
-export class GoalSelectionComponent implements AfterViewInit, OnInit {
+export class GoalSelectionComponent implements OnInit {
 
-  public options: Array<GoalSelection.Option> = [{
+  public radioOptions: Array<TdRadioButtonGroup.Option> = [{
     text: '增肌',
-    value: 'bulking'
+    value: 'bulking',
+    selected: true
   }, {
     text: '維持',
-    value: 'maintain'
+    value: 'maintain',
+    selected: false
   }, {
     text: '減脂',
-    value: 'cutting'
+    value: 'cutting',
+    selected: false
   }];
 
   public viewModel = {
-    currentOption: null as GoalSelection.Option,
-    currentOptionIndex: null as number
-  };
-
-  private internalSettings = {
-    className: {
-      selected: 'selected'
-    }
+    currentValue: null as SaleForceAPI.CalculateTDEE.GoalType
   };
 
   @Input()
@@ -54,64 +51,7 @@ export class GoalSelectionComponent implements AfterViewInit, OnInit {
   ngOnInit() {
   }
 
-  ngAfterViewInit() {
-    this.initialOption();
-  }
-
-  click(option: GoalSelection.Option, index: number) {
-    this.selectOption(option, index);
-    if (this.submitCallback) {
-      this.submitCallback();
-    }
-  }
-
-  selectOption(option: GoalSelection.Option, index: number) {
-    if (typeof this.viewModel.currentOptionIndex === 'number') {
-      const currentOptionElm = this.optionElmList.toArray()[this.viewModel.currentOptionIndex].nativeElement as HTMLElement;
-
-      this.removeClass({
-        targetElm: currentOptionElm,
-        className: this.internalSettings.className.selected
-      });
-    }
-
-    const targetOptionElm = this.optionElmList.toArray()[index].nativeElement as HTMLElement;
-
-    this.appendClass({
-      targetElm: targetOptionElm,
-      className: this.internalSettings.className.selected
-    });
-
-    this.viewModel.currentOption = option;
-    this.viewModel.currentOptionIndex = index;
-
-  }
-
-  private initialOption() {
-    const targetOptionIndex = 0;
-
-    this.selectOption(this.options[targetOptionIndex], targetOptionIndex);
-  }
-
-  private appendClass(arg: {
-    targetElm: HTMLElement;
-    className: string;
-  }) {
-    const hasNoClass = !arg.targetElm.classList.contains(arg.className);
-
-    if (hasNoClass) {
-      arg.targetElm.classList.add(arg.className);
-    }
-  }
-
-  private removeClass(arg: {
-    targetElm: HTMLElement;
-    className: string;
-  }) {
-    const hasClass = arg.targetElm.classList.contains(arg.className);
-
-    if (hasClass) {
-      arg.targetElm.classList.remove(arg.className);
-    }
+  selectOption(value: SaleForceAPI.CalculateTDEE.GoalType) {
+    this.viewModel.currentValue = value;
   }
 }

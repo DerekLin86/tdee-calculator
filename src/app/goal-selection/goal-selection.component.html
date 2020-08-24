@@ -3,14 +3,10 @@
     <span>你想要達成的目標是？</span>
   </div>
   <div class="goal-selection-content-container">
-    <div *ngFor="let option of options; let index = index"
-      class="goal-selection-content-item-container"
-      (click)="click(option, index)"
-      #optionElm
-    >
-      <div class="goal-selection-content-item"></div>
-      <span>{{ option.text }}</span>
-    </div>
+    <div class="goal-selection-content-preview-image">Preview Image</div>
+    <app-td-radio-button-group [options]="radioOptions"
+      (optionChange)="selectOption($event)"
+    ></app-td-radio-button-group>
   </div>
   <div class="goal-selection-bottom-container">
     <app-td-tips>不同的目標有不同的建議營養素比例!</app-td-tips>
