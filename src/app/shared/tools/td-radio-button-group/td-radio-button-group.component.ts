@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Input, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, OnInit, Input, Output, QueryList, ViewChildren } from '@angular/core';
 
 import { TdRadioButtonGroup } from './td-radio-button-group';
 
@@ -10,21 +10,20 @@ import { TdRadioButtonGroup } from './td-radio-button-group';
 export class TdRadioButtonGroupComponent implements OnInit {
 
   private _options = [] as Array<TdRadioButtonGroup.Option>;
+  private internalSettings = {
+    className: {
+      selected: 'selected'
+    }
+  };
 
   public viewModel = {
-    currentValue: null
+    currentValue: null,
+    currentOptionIndex: null as number
   };
 
   @Input()
   set options(values: Array<TdRadioButtonGroup.Option>) {
     this._options = values;
-
-    for (const value of values) {
-      if (!!value.selected) {
-        this.viewModel.currentValue = value.value;
-        break;
-      }
-    }
   }
 
   get options() {
@@ -34,26 +33,55 @@ export class TdRadioButtonGroupComponent implements OnInit {
   @Output()
   optionChange = new EventEmitter<string | number>();
 
+  @ViewChildren('optionElm')
+  optionList: QueryList<ElementRef>;
+
   constructor() {}
 
   ngOnInit() {
 
   }
 
-  changeOption(event: TdRadioButtonGroup.changeEvent ) {
-    this.optionChange.emit(event.value);
-    this.options.forEach((option) => {
-      const isChangeOption =  option.value === event.value;
+  selectOption(index: number) {
+    const hasCurrentOption = typeof this.viewModel.currentOptionIndex === 'number';
 
-      if (isChangeOption) {
-        option.selected = true;
-      } else {
-        option.selected = false;
-      }
+    if (hasCurrentOption) {
+      this.removeClass({
+        targetElm: this.optionList.toArray()[this.viewModel.currentOptionIndex].nativeElement as HTMLElement,
+        className: this.internalSettings.className.selected
+      });
+    }
+
+    this.appendClass({
+      targetElm: this.optionList.toArray()[index].nativeElement as HTMLElement,
+      className: this.internalSettings.className.selected
+    });
+
+    this.viewModel = Object.assign(this.viewModel, {
+      currentValue: this.options[index].value,
+      currentOptionIndex: index
     });
   }
 
-  getCurrentViewModel() {
-    return this.viewModel.currentValue;
+  private appendClass(arg: {
+    targetElm: HTMLElement;
+    className: string;
+  }) {
+    const hasNoClass = !arg.targetElm.classList.contains(arg.className);
+
+    if (hasNoClass) {
+      arg.targetElm.classList.add(arg.className);
+    }
+  }
+
+  private removeClass(arg: {
+    targetElm: HTMLElement;
+    className: string;
+  }) {
+    const hasClass = arg.targetElm.classList.contains(arg.className);
+
+    if (hasClass) {
+      arg.targetElm.classList.remove(arg.className);
+    }
   }
 }

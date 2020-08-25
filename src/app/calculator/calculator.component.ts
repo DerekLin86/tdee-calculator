@@ -31,8 +31,7 @@ export class CalculatorComponent implements AfterViewInit, OnInit {
   public viewModel = {
     bmrRadioOptions: [{
       text: '知道',
-      value: '1',
-      selected: false
+      value: '1'
     }, {
       text: '不知道',
       value: '0',
@@ -40,8 +39,7 @@ export class CalculatorComponent implements AfterViewInit, OnInit {
     }] as Array<TdRadioButtonGroup.Option>,
     sexRadioOptions: [{
       text: '男',
-      value: 'male',
-      selected: true
+      value: 'male'
     }, {
       text: '女',
       value: 'female',
@@ -152,7 +150,6 @@ export class CalculatorComponent implements AfterViewInit, OnInit {
   }
 
   ngAfterViewInit() {
-    this.initFormValue();
   }
 
   bmrOptionChange(value: string | number) {
@@ -220,14 +217,6 @@ export class CalculatorComponent implements AfterViewInit, OnInit {
 
     this.viewModel.formGroup.basicBmr = this.formBuilder.group(defaultBmrSetting);
     this.viewModel.formGroup.dropdown = this.formBuilder.group(defaultDropdownSetting);
-  }
-
-  private initFormValue() {
-    this.viewModel.isUnknown = this.viewModel.bmrRadioOptions.find(
-      option => option.text === '不知道'
-    ).selected;
-
-    this.updateBasicBmrInputOption();
   }
 
   private initDropOption() {

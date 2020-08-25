@@ -21,16 +21,13 @@ export class GoalSelectionComponent implements OnInit {
 
   public radioOptions: Array<TdRadioButtonGroup.Option> = [{
     text: '增肌',
-    value: 'bulking',
-    selected: true
+    value: 'bulking'
   }, {
     text: '維持',
-    value: 'maintain',
-    selected: false
+    value: 'maintain'
   }, {
     text: '減脂',
-    value: 'cutting',
-    selected: false
+    value: 'cutting'
   }];
 
   public viewModel = {

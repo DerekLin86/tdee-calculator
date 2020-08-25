@@ -1,13 +1,33 @@
 @import '../../../scss/shared-color.scss';
 
-:host {
-  .mat-radio-group {
-    color: $shared-grey-dark-color;
-    display: flex;
-    flex-direction: column;
-    .mat-radio-button {
-      flex: 1;
-      margin-bottom: .25rem;
+@mixin selectedOption {
+  .selected {
+    .td-radio-button-group-option-icon {
+      border-color: #FFF;
+      background-color: $shared-green-light-color;
+      box-shadow: 0 0 0 2px $shared-green-light-color;
     }
   }
 }
+
+.td-radio-button-group {
+  &-container {
+    display: flex;
+    flex-direction: column;
+  }
+  &-option {
+    align-items: center;
+    display: flex;
+    height: 28px;
+    &-icon {
+      border: 2px solid transparent;
+      box-shadow: 0 0 0 2px $shared-grey-dark-color;
+      border-radius: 50%;
+      height: 14px;
+      margin-right: 8px;
+      width: 14px;
+    }
+  }
+}
+
+@include selectedOption();

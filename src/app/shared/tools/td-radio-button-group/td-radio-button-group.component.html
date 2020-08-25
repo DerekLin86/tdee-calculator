@@ -1,4 +1,4 @@
-<mat-radio-group #element
+<!-- <mat-radio-group #element
   [(ngModel)]="viewModel.currentValue"
   (change)="changeOption($event)"
 >
@@ -7,4 +7,17 @@
   >
     {{ option?.text }}
   </mat-radio-button>
-</mat-radio-group>
+</mat-radio-group> -->
+
+<ng-container *ngIf="options">
+  <div class="td-radio-button-group-container">
+    <div *ngFor="let option of options; let index = index"
+      class="td-radio-button-group-option"
+      (click)="selectOption(index)"
+      #optionElm
+    >
+      <div class="td-radio-button-group-option-icon"></div>
+      <span>{{ option.text }}</span>
+    </div>
+  </div>
+</ng-container>
