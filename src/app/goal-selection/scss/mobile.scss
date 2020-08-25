@@ -17,7 +17,6 @@
       @include contentContainer();
       height: 40%;
       justify-content: center;
-      padding-bottom: 4rem;
     }
     &-preview-image {
       align-items: center;
@@ -31,7 +30,7 @@
   }
   &-bottom {
     &-container {
-      height: 300px;
+      height: 200px;
       margin-top: 2rem;
       width: 100%;
     }

@@ -2,5 +2,9 @@
   <div class="allergy-title-container">
     <span>你對什麼食物過敏呢？</span>
   </div>
+  <div class="allergy-content-container">
+    <app-td-radio-button-group [options]="radioOptions"></app-td-radio-button-group>
+    <app-td-input-formcontrol>其他</app-td-input-formcontrol>
+  </div>
   <app-td-button (click)="submit()">下一步</app-td-button>
 </section>
