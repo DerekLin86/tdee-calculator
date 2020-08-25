@@ -61,6 +61,12 @@ export class GoalSelectionComponent implements AfterViewInit, OnInit {
     this.viewModel.currentValue = value;
   }
 
+  submit() {
+    if (this.submitCallback) {
+      this.submitCallback();
+    }
+  }
+
   private initialOption() {
     this.tdRadioButtonGroupComponent.selectOption(0);
   }
