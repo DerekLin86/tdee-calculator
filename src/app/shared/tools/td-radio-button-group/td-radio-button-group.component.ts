@@ -61,6 +61,8 @@ export class TdRadioButtonGroupComponent implements OnInit {
       currentValue: this.options[index].value,
       currentOptionIndex: index
     });
+
+    this.optionChange.emit(this.viewModel.currentValue);
   }
 
   private appendClass(arg: {

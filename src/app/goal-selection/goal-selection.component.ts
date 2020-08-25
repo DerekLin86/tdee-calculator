@@ -1,4 +1,5 @@
 import {
+  AfterViewInit,
   Component,
   ElementRef,
   Input,
@@ -17,7 +18,7 @@ import { TdRadioButtonGroupComponent } from '../shared/tools/td-radio-button-gro
   templateUrl: './goal-selection.component.html',
   styleUrls: ['./goal-selection.component.scss']
 })
-export class GoalSelectionComponent implements OnInit {
+export class GoalSelectionComponent implements AfterViewInit, OnInit {
 
   public radioOptions: Array<TdRadioButtonGroup.Option> = [{
     text: '增肌',
@@ -40,15 +41,27 @@ export class GoalSelectionComponent implements OnInit {
   @ViewChild('goalSelection', {static: true})
   goalSelectionElm: ElementRef;
 
+  @ViewChild(TdRadioButtonGroupComponent, {static: true})
+  tdRadioButtonGroupComponent: TdRadioButtonGroupComponent;
+
   @ViewChildren('optionElm')
   optionElmList: QueryList<ElementRef>;
 
   constructor() { }
 
   ngOnInit() {
+
+  }
+
+  ngAfterViewInit() {
+    this.initialOption();
   }
 
   selectOption(value: SaleForceAPI.CalculateTDEE.GoalType) {
     this.viewModel.currentValue = value;
+  }
+
+  private initialOption() {
+    this.tdRadioButtonGroupComponent.selectOption(0);
   }
 }
