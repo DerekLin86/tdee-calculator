@@ -17,8 +17,12 @@
   &-content {
     &-container {
       @include contentContainer();
+      align-items: unset;
+      flex-direction: column;
+      height: 30%;
       justify-content: center;
       margin-bottom: 1rem;
+      width: 65%;
     }
   }
 }

@@ -2,5 +2,9 @@
   <div class="gym-title-container">
     <span>有加入的健身房是？</span>
   </div>
+  <div class="gym-content-container">
+    <app-td-radio-button-group [options]="radioOptions"></app-td-radio-button-group>
+    <app-td-input-formcontrol>其他</app-td-input-formcontrol>
+  </div>
   <app-td-button (click)="submit()">開始計算!</app-td-button>
 </section>
