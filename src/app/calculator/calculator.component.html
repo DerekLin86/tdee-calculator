@@ -26,9 +26,11 @@
   ></app-allergy>
   <app-gym [submitCallback]="submit.bind(this)"></app-gym>
   <app-calculation-result
-    *ngIf="!!calculatorService.tdeeResult$.value"
+    [ngClass]="{'show': !!calculatorService.tdeeResult$.value}"
     [result]="calculatorService.tdeeResult$.value"
   ></app-calculation-result>
+
+
 
   <!-- <div class="calculator-basic-info-container">
     <span class="calculator-basic-info-title">基本資料</span>

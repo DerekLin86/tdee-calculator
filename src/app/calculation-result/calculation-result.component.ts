@@ -1,5 +1,7 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { combineLatest, Subject } from 'rxjs';
+import { filter, map} from 'rxjs/operators';
 
 import { Calculator } from '../calculator/calculator';
 import { CalculationResult } from './calculation-result';
@@ -10,20 +12,17 @@ import { ScrollMoveDirective } from '../shared/tools/scroll-move/scroll-move.dir
   templateUrl: './calculation-result.component.html',
   styleUrls: ['./calculation-result.component.scss']
 })
-export class CalculationResultComponent implements OnInit {
+export class CalculationResultComponent implements AfterViewInit, OnInit {
 
   public resultform: FormGroup;
 
   private _result: Calculator.TDEE.Result = null ;
+  private result$ =  new Subject<Calculator.TDEE.Result>();
+  private afterViewInitDelay$ = new Subject<boolean>();
 
   @Input()
   set result(data: Calculator.TDEE.Result) {
-    if (data) {
-      Object.keys(data).forEach((key) => {
-        this.resultform.controls[key].patchValue({value: data[key]});
-      });
-    }
-
+    this.result$.next(data);
     this._result = data;
   }
 
@@ -40,6 +39,26 @@ export class CalculationResultComponent implements OnInit {
 
   ngOnInit() {
     this.initForm();
+    this.initializeViewModel();
+  }
+
+  ngAfterViewInit() {
+    this.afterViewInitDelay$.next(true);
+  }
+
+  private initializeViewModel() {
+    combineLatest(this.afterViewInitDelay$, this.result$)
+      .pipe(
+        map(([signal, result]) => {
+          return result;
+        }),
+        filter((result) => !!result)
+      )
+      .subscribe((result) => {
+        Object.keys(result).forEach((key) => {
+          this.resultform.controls[key].patchValue({value: result[key]});
+        });
+      });
   }
 
   private initForm() {

@@ -1,8 +1,32 @@
 @import '../../shared/scss/shared-color.scss';
 @import '../../shared/scss/shared-mixin.scss';
 
+@mixin show {
+  :host {
+    &.show {
+      .calculation-result {
+        &-container {
+          visibility: unset;
+        }
+        &-title {
+          &-container {
+            display: block;
+          }
+        }
+        &-content {
+          &-container {
+            display: block;
+          }
+        }
+      }
+      height: 80vh;
+    }
+  }
+}
+
 :host {
   @include sharedHostBlock();
+  height: 0;
 }
 
 @mixin matInput {
@@ -14,15 +38,18 @@
 .calculation-result {
   &-container {
     @include sharedContainerBlock();
+    visibility: hidden;
   }
 
   &-title {
     &-container {
       @include sharedTitleBlock();
+      display: none;
     }
   }
   &-content {
     &-container {
+      display: none;
       margin-bottom: 1.5rem;
     }
   }
@@ -43,4 +70,5 @@
   }
 }
 
+@include show();
 @include matInput();
