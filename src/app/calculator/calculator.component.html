@@ -26,6 +26,7 @@
   ></app-allergy>
   <app-gym [submitCallback]="submit.bind(this)"></app-gym>
   <app-calculation-result
+    *ngIf="!!calculatorService.tdeeResult$.value"
     [result]="calculatorService.tdeeResult$.value"
   ></app-calculation-result>
 
