@@ -50,7 +50,7 @@ export class SportFequencyComponent implements AfterViewInit, OnInit {
   };
 
   get currentSelectedValue() {
-    if (this.viewModel.currentOptionIndex) {
+    if (typeof this.viewModel.currentOptionIndex === 'number') {
       return this.viewModel.raidoOptions[this.viewModel.currentOptionIndex].value;
     } else {
       return null;
