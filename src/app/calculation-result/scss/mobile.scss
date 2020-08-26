@@ -5,6 +5,12 @@
   @include sharedHostBlock();
 }
 
+@mixin matInput {
+  :host ::ng-deep .mat-form-field-infix {
+    width: 200px;
+  }
+}
+
 .calculation-result {
   &-container {
     @include sharedContainerBlock();
@@ -36,3 +42,5 @@
     }
   }
 }
+
+@include matInput();
