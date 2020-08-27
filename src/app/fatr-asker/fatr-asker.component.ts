@@ -1,4 +1,7 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { filter, first } from 'rxjs/operators';
+
+import { CalculatorService } from '../calculator/calculator.service';
 
 @Component({
   selector: 'app-fatr-asker',
@@ -45,7 +48,8 @@ export class FatrAskerComponent implements OnInit {
     }, {
       imageUrl: 'assets/images/fatr-asker/male6.png',
       text: '> 30%'
-    }]
+    }],
+    currentGenderOptions: []
   };
 
   @Input()
@@ -54,9 +58,20 @@ export class FatrAskerComponent implements OnInit {
   @ViewChild('fatrAsker', {static: true})
   fatrAskerElm: ElementRef;
 
-  constructor() { }
+  constructor(
+    private calculatorService: CalculatorService
+  ) { }
 
   ngOnInit() {
+    this.calculatorService.gender$
+      .pipe(
+        filter(gender => !!gender),
+      )
+      .subscribe((gender) => {
+        this.viewModel.currentGenderOptions = gender === 'male' ?
+          this.viewModel.maleOptions :
+          this.viewModel.femaleOptions;
+      });
   }
 
   submit() {
