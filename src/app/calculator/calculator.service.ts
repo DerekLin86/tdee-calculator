@@ -1,3 +1,4 @@
+import { Gender } from './../gender-selection/gender-selection';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, of, Observable } from 'rxjs';
 
@@ -5,10 +6,12 @@ import { TdDrowdown } from '../shared/tools/td-dropdown/td-dropdown';
 import { SaleForceAPI } from '../saleforce-api/saleforce-api';
 import { SaleforceApiService } from '../saleforce-api/saleforce-api.service';
 import { Calculator } from './calculator';
+import { GenderSelection } from '../gender-selection/gender-selection';
 
 @Injectable()
 export class CalculatorService {
 
+  public gender$ = new BehaviorSubject<GenderSelection.ViewModel.Gender>('male');
   public tdeeResult$ = new BehaviorSubject<Calculator.TDEE.Result>(null);
 
   constructor(

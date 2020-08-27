@@ -1,6 +1,8 @@
 import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChildren, QueryList } from '@angular/core';
+import { filter, first } from 'rxjs/operators';
 
 import { GenderSelection } from './gender-selection';
+import { CalculatorService } from '../calculator/calculator.service';
 
 @Component({
   selector: 'app-gender-selection',
@@ -32,7 +34,9 @@ export class GenderSelectionComponent implements AfterViewInit, OnInit {
   @ViewChildren('genderItem')
   genderItemArray: QueryList<ElementRef>;
 
-  constructor() { }
+  constructor(
+    private calculatorService: CalculatorService
+  ) { }
 
   ngOnInit() {
   }
@@ -67,14 +71,23 @@ export class GenderSelectionComponent implements AfterViewInit, OnInit {
       elemenet: targetElement,
       option
     };
+
+    this.calculatorService.gender$.next(this.viewModel.currentSelectedOption.option.value);
   }
 
   private initOption() {
-    const defaultOptionIndex = 0;
-    this.selectOption(
-      this.viewModel.options[defaultOptionIndex],
-      defaultOptionIndex
-    );
+    this.calculatorService.gender$
+      .pipe(
+        filter((gender) => !!gender),
+        first()
+      )
+      .subscribe((gender) => {
+        const defaultOption = this.viewModel.options.find(option => option.value === gender);
+        this.selectOption(
+          defaultOption,
+          this.viewModel.options.indexOf(defaultOption)
+        );
+      });
   }
 
   private appendClass(arg: {
