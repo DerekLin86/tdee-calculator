@@ -8,6 +8,8 @@
 .fatr-asker {
   &-container {
     @include sharedContainerBlock();
+    padding: .5rem 0;
+    position: relative;
   }
   &-title {
     &-container {
@@ -17,8 +19,34 @@
   &-content {
     &-container {
       @include contentContainer();
+      align-items: unset;
+      flex-wrap: wrap;
+      height: calc(100% - 96px);
       justify-content: center;
-      margin-bottom: 1rem;
+      width: 80%;
+    }
+  }
+  &-option {
+    &-container {
+      align-items: center;
+      display: flex;
+      flex: 50%;
+      flex-direction: column;
+    }
+    &-image {
+      width: 78%;
+    }
+    &-text {
+      color: $shared-grey-dark-color;
+      margin-top: .25rem;
+    }
+  }
+  &-bottom {
+    &-container {
+      display: flex;
+      height: 36px;
+      position: absolute;
+      bottom: 1rem;
     }
   }
 }

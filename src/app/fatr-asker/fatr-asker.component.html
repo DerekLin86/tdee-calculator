@@ -2,5 +2,16 @@
   <div class="fatr-asker-title-container">
     <span>你的體脂肪率是多少?</span>
   </div>
-  <app-td-button (click)="submit()">下一步</app-td-button>
+  <div class="fatr-asker-content-container">
+    <div *ngFor="let option of viewModel.femaleOptions"
+      class="fatr-asker-option-container"
+    >
+      <img [src]="option.imageUrl" class="fatr-asker-option-image">
+      <span class="fatr-asker-option-text">{{ option.text }}</span>
+    </div>
+  </div>
+  <div class="fatr-asker-bottom-container">
+    <app-td-button (click)="submit()">下一步</app-td-button>
+  </div>
+
 </div>
