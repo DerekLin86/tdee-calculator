@@ -3,11 +3,20 @@
     <span>你的體脂肪率是多少?</span>
   </div>
   <div class="fatr-asker-content-container">
-    <div *ngFor="let option of viewModel.currentGenderOptions"
+    <div *ngFor="let option of viewModel.currentGenderOptions; let index = index"
       class="fatr-asker-option-container"
+      #genderOption
+      (click)="selectOption(index)"
     >
       <img [src]="option.imageUrl" class="fatr-asker-option-image">
-      <span class="fatr-asker-option-text">{{ option.text }}</span>
+      <div class="fatr-asker-option-text-container">
+        <div class="fatr-asker-option-selected-icon"></div>
+        <!-- <svg class="fatr-asker-option-selected-icon">
+          <use href="/assets/images/fatr-asker/unselected-icon.svg#unselected"></use>
+        </svg> -->
+        <span>{{ option.text }}</span>
+      </div>
+
     </div>
   </div>
   <div class="fatr-asker-bottom-container">

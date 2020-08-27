@@ -1,4 +1,3 @@
-import { Gender } from './../gender-selection/gender-selection';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, of, Observable } from 'rxjs';
 

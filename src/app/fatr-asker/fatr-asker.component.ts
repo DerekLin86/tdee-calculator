@@ -1,5 +1,5 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
-import { filter, first } from 'rxjs/operators';
+import { AfterViewInit, Component, ElementRef, Input, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { filter } from 'rxjs/operators';
 
 import { CalculatorService } from '../calculator/calculator.service';
 
@@ -8,7 +8,13 @@ import { CalculatorService } from '../calculator/calculator.service';
   templateUrl: './fatr-asker.component.html',
   styleUrls: ['./fatr-asker.component.scss']
 })
-export class FatrAskerComponent implements OnInit {
+export class FatrAskerComponent implements AfterViewInit, OnInit {
+
+  private internalSettings = {
+    className: {
+      selected: 'selected'
+    }
+  };
 
   public viewModel = {
     femaleOptions: [{
@@ -49,7 +55,8 @@ export class FatrAskerComponent implements OnInit {
       imageUrl: 'assets/images/fatr-asker/male6.png',
       text: '> 30%'
     }],
-    currentGenderOptions: []
+    currentGenderOptions: [],
+    currentSelectedOptionIndex: null
   };
 
   @Input()
@@ -57,6 +64,9 @@ export class FatrAskerComponent implements OnInit {
 
   @ViewChild('fatrAsker', {static: true})
   fatrAskerElm: ElementRef;
+
+  @ViewChildren('genderOption')
+  genderOptionList: QueryList<ElementRef>;
 
   constructor(
     private calculatorService: CalculatorService
@@ -74,10 +84,58 @@ export class FatrAskerComponent implements OnInit {
       });
   }
 
+  ngAfterViewInit() {
+    this.initDefaultOption();
+  }
+
   submit() {
     if (this.submitCallback) {
       this.submitCallback();
     }
   }
 
+  selectOption(optionIndex: number) {
+    if (typeof this.viewModel.currentSelectedOptionIndex === 'number') {
+      this.removeClass({
+        targetElm: this.genderOptionList.toArray()[this.viewModel.currentSelectedOptionIndex],
+        className: this.internalSettings.className.selected
+      });
+    }
+
+    if (typeof optionIndex === 'number') {
+      this.appendClass({
+        targetElm: this.genderOptionList.toArray()[optionIndex],
+        className: this.internalSettings.className.selected
+      });
+      this.viewModel.currentSelectedOptionIndex = optionIndex;
+    }
+  }
+
+  private initDefaultOption() {
+    const defaultOptionIndex = 0;
+
+    this.selectOption(defaultOptionIndex);
+  }
+
+  private appendClass(arg: {
+    targetElm: ElementRef;
+    className: string;
+  }) {
+    const hasNoClass = !(arg.targetElm.nativeElement as HTMLElement).classList.contains(arg.className);
+
+    if (hasNoClass) {
+      (arg.targetElm.nativeElement as HTMLElement).classList.add(arg.className);
+    }
+  }
+
+  private removeClass(arg: {
+    targetElm: ElementRef;
+    className: string;
+  }) {
+    const hasClass = (arg.targetElm.nativeElement as HTMLElement).classList.contains(arg.className);
+
+    if (hasClass) {
+      (arg.targetElm.nativeElement as HTMLElement).classList.remove(arg.className);
+    }
+  }
 }

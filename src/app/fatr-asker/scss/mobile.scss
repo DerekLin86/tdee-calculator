@@ -1,6 +1,16 @@
 @import '../../shared/scss/shared-color.scss';
 @import '../../shared/scss/shared-mixin.scss';
 
+@mixin selectedStyle {
+  .selected {
+    &.fatr-asker-option-container {
+      .fatr-asker-option-selected-icon {
+        background-image: url('/apex/assets/images/fatr-asker/selected-icon.svg');
+      }
+    }
+  }
+}
+
 :host {
   @include sharedHostBlock();
 }
@@ -29,16 +39,29 @@
   &-option {
     &-container {
       align-items: center;
+      cursor: pointer;
       display: flex;
       flex: 50%;
       flex-direction: column;
+      position: relative;
     }
     &-image {
       width: 78%;
     }
+    &-selected-icon {
+      background-image: url('/apex/assets/images/fatr-asker/unselected-icon.svg');
+      background-size: contain;
+      height: 20px;
+      margin-right: .25rem;
+      width: 20px;
+    }
     &-text {
-      color: $shared-grey-dark-color;
-      margin-top: .25rem;
+      &-container {
+        align-items: center;
+        color: $shared-grey-dark-color;
+        display: flex;
+        margin-top: .25rem;
+      }
     }
   }
   &-bottom {
@@ -50,3 +73,5 @@
     }
   }
 }
+
+@include selectedStyle();
