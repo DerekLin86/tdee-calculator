@@ -3,6 +3,21 @@ import { filter } from 'rxjs/operators';
 
 import { CalculatorService } from '../calculator/calculator.service';
 
+const domainName = 'https://my-dev-developer-edition.ap16.force.com/CaloriesControl';
+
+declare var getFatrMaleStaticResourceRoot: () => string;
+declare var getFatrFemaleStaticResourceRoot: () => string;
+
+export function getFatrMalesStaticResource(resourcePath: string) {
+    return domainName +
+      getFatrMaleStaticResourceRoot() + '/' + resourcePath;
+}
+
+export function getFatrFemalesStaticResource(resourcePath: string) {
+  return domainName +
+    getFatrFemaleStaticResourceRoot() + '/' + resourcePath;
+}
+
 @Component({
   selector: 'app-fatr-asker',
   templateUrl: './fatr-asker.component.html',
@@ -18,41 +33,41 @@ export class FatrAskerComponent implements AfterViewInit, OnInit {
 
   public viewModel = {
     femaleOptions: [{
-      imageUrl: 'assets/images/fatr-asker/female1.png',
+      imageUrl: getFatrFemalesStaticResource('female1.png'),
       text: '< 10%'
     }, {
-      imageUrl: 'assets/images/fatr-asker/female2.png',
+      imageUrl: getFatrFemalesStaticResource('female2.png'),
       text: '10% ~ 15%'
     }, {
-      imageUrl: 'assets/images/fatr-asker/female3.png',
+      imageUrl: getFatrFemalesStaticResource('female3.png'),
       text: '15% ~ 20%'
     }, {
-      imageUrl: 'assets/images/fatr-asker/female4.png',
+      imageUrl: getFatrFemalesStaticResource('female4.png'),
       text: '20% ~ 25%'
     }, {
-      imageUrl: 'assets/images/fatr-asker/female5.png',
+      imageUrl: getFatrFemalesStaticResource('female5.png'),
       text: '25% ~ 30%'
     }, {
-      imageUrl: 'assets/images/fatr-asker/female6.png',
+      imageUrl: getFatrFemalesStaticResource('female6.png'),
       text: '> 30%'
     }],
     maleOptions: [{
-      imageUrl: 'assets/images/fatr-asker/male1.png',
+      imageUrl: getFatrMalesStaticResource('male1.png'),
       text: '< 10%'
     }, {
-      imageUrl: 'assets/images/fatr-asker/male2.png',
+      imageUrl: getFatrMalesStaticResource('male2.png'),
       text: '10% ~ 15%'
     }, {
-      imageUrl: 'assets/images/fatr-asker/male3.png',
+      imageUrl: getFatrMalesStaticResource('male3.png'),
       text: '15% ~ 20%'
     }, {
-      imageUrl: 'assets/images/fatr-asker/male4.png',
+      imageUrl: getFatrMalesStaticResource('male4.png'),
       text: '25% ~ 30%'
     }, {
-      imageUrl: 'assets/images/fatr-asker/male5.png',
+      imageUrl: getFatrMalesStaticResource('male5.png'),
       text: '25% ~ 30%'
     }, {
-      imageUrl: 'assets/images/fatr-asker/male6.png',
+      imageUrl: getFatrMalesStaticResource('male6.png'),
       text: '> 30%'
     }],
     currentGenderOptions: [],
@@ -67,6 +82,7 @@ export class FatrAskerComponent implements AfterViewInit, OnInit {
 
   @ViewChildren('genderOption')
   genderOptionList: QueryList<ElementRef>;
+
 
   constructor(
     private calculatorService: CalculatorService
