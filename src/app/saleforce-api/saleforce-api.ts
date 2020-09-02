@@ -8,6 +8,10 @@ export namespace SaleForceAPI {
         arg: any,
         callback: any,
         config: any): void;
+      getAllergenList(
+        callback: any,
+        config: any
+      ): void;
     }
   }
   export interface ApiStatus {

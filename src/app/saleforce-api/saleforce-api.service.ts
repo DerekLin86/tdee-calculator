@@ -36,6 +36,20 @@ export class SaleforceApiService {
     return observer;
   }
 
+  getAllergenList() {
+    if (!this.controller) {
+      return null;
+    }
+
+    return new Observable((obsever) => {
+      this.controller.getAllergenList((result: Array<string>, status) => {
+        obsever.next(result);
+        obsever.complete();
+      },
+      { buffer: true, escape: false, timeout: 30000 });
+    });
+  }
+
   private initController() {
     this.controller = getTdeeApiWrapper();
   }
