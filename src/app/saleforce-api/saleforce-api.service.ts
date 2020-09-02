@@ -50,6 +50,20 @@ export class SaleforceApiService {
     });
   }
 
+  getGymList() {
+    if (!this.controller) {
+      return null;
+    }
+
+    return new Observable((obsever) => {
+      this.controller.getGymList((result: Array<string>, status) => {
+        obsever.next(result);
+        obsever.complete();
+      },
+      { buffer: true, escape: false, timeout: 30000 });
+    });
+  }
+
   private initController() {
     this.controller = getTdeeApiWrapper();
   }

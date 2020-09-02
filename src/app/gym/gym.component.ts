@@ -1,6 +1,7 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 
 import { TdRadioButtonGroup } from '../shared/tools/td-radio-button-group/td-radio-button-group';
+import { SaleforceApiService } from '../saleforce-api/saleforce-api.service';
 
 @Component({
   selector: 'app-gym',
@@ -9,19 +10,7 @@ import { TdRadioButtonGroup } from '../shared/tools/td-radio-button-group/td-rad
 })
 export class GymComponent implements OnInit {
 
-  public radioOptions: Array<TdRadioButtonGroup.Option> = [{
-    text: 'Word Gym',
-    value: 'Word Gym'
-  }, {
-    text: '健身工廠',
-    value: '健身工廠'
-  }, {
-    text: '成吉思汗',
-    value: '成吉思汗'
-  }, {
-    text: '享健身',
-    value: '享健身'
-  }];
+  public radioOptions: Array<TdRadioButtonGroup.Option> = [];
 
   @Input()
   submitCallback: () => void;
@@ -29,14 +18,31 @@ export class GymComponent implements OnInit {
   @ViewChild('gym', {static: true})
   gymElm: ElementRef;
 
-  constructor() { }
+  constructor(
+    private saleforceApiService: SaleforceApiService
+  ) { }
 
   ngOnInit() {
+    this.initGymList();
   }
 
   submit() {
     if (this.submitCallback) {
       this.submitCallback();
     }
+  }
+
+  private initGymList() {
+    this.saleforceApiService.getGymList()
+      .subscribe((gyms: Array<string>) => {
+        if (!!gyms) {
+          gyms.forEach((gym) => {
+            this.radioOptions.push({
+              text: gym,
+              value: gym
+            });
+          });
+        }
+      });
   }
 }

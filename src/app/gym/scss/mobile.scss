@@ -1,6 +1,14 @@
 @import '../../shared/scss/shared-color.scss';
 @import '../../shared/scss/shared-mixin.scss';
 
+@mixin radioButton {
+  app-td-radio-button-group ::ng-deep {
+    .td-radio-button-group-option {
+      margin-bottom: .25rem;
+    }
+  }
+}
+
 :host {
   @include sharedHostBlock();
 }
@@ -19,10 +27,12 @@
       @include contentContainer();
       align-items: unset;
       flex-direction: column;
-      height: 30%;
+      height: auto;
       justify-content: center;
       margin-bottom: 1rem;
-      width: 65%;
+      width: 60%;
     }
   }
 }
+
+@include radioButton();

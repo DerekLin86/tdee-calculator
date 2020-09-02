@@ -12,6 +12,10 @@ export namespace SaleForceAPI {
         callback: any,
         config: any
       ): void;
+      getGymList(
+        callback: any,
+        config: any
+      ): void;
     }
   }
   export interface ApiStatus {
