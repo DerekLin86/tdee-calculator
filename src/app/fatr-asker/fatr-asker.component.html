@@ -10,10 +10,8 @@
     >
       <img [src]="option.imageUrl" class="fatr-asker-option-image">
       <div class="fatr-asker-option-text-container">
-        <div class="fatr-asker-option-selected-icon"></div>
-        <!-- <svg class="fatr-asker-option-selected-icon">
-          <use href="/assets/images/fatr-asker/unselected-icon.svg#unselected"></use>
-        </svg> -->
+        <img [src]="viewModel.selectedIcon" class="fatr-asker-selected-icon">
+        <img [src]="viewModel.unselectedIcon" class="fatr-asker-unselected-icon">
         <span>{{ option.text }}</span>
       </div>
 

@@ -7,6 +7,7 @@ const domainName = 'https://my-dev-developer-edition.ap16.force.com/CaloriesCont
 
 declare var getFatrMaleStaticResourceRoot: () => string;
 declare var getFatrFemaleStaticResourceRoot: () => string;
+declare var getTdeeSharedStaticResourceRoot: () => string;
 
 export function getFatrMalesStaticResource(resourcePath: string) {
     return domainName +
@@ -16,6 +17,11 @@ export function getFatrMalesStaticResource(resourcePath: string) {
 export function getFatrFemalesStaticResource(resourcePath: string) {
   return domainName +
     getFatrFemaleStaticResourceRoot() + '/' + resourcePath;
+}
+
+export function getTdeeSharedStaticResource(resourcePath: string) {
+  return domainName +
+    getTdeeSharedStaticResourceRoot() + '/' + resourcePath;
 }
 
 @Component({
@@ -70,6 +76,8 @@ export class FatrAskerComponent implements AfterViewInit, OnInit {
       imageUrl: getFatrMalesStaticResource('male6.png'),
       text: '> 30%'
     }],
+    selectedIcon: getTdeeSharedStaticResource('selected-icon.svg'),
+    unselectedIcon: getTdeeSharedStaticResource('unselected-icon.svg'),
     currentGenderOptions: [],
     currentSelectedOptionIndex: null
   };

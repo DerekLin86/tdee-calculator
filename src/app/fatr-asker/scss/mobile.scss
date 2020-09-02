@@ -2,10 +2,23 @@
 @import '../../shared/scss/shared-mixin.scss';
 
 @mixin selectedStyle {
+  .fatr-asker {
+    &-selected-icon {
+      display: none;
+      margin-right: .25rem;
+    }
+    &-unselected-icon {
+      display: inherit;
+      margin-right: .25rem;
+    }
+  }
   .selected {
-    &.fatr-asker-option-container {
-      .fatr-asker-option-selected-icon {
-        background-image: url('/apex/assets/images/fatr-asker/selected-icon.svg');
+    .fatr-asker {
+      &-selected-icon {
+        display: inherit;
+      }
+      &-unselected-icon {
+        display: none;
       }
     }
   }
