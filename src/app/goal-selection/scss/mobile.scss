@@ -8,6 +8,7 @@
 .goal-selection {
   &-container {
     @include sharedContainerBlock();
+    position: relative;
   }
   &-title-container {
     @include sharedTitleBlock();
@@ -30,8 +31,10 @@
   }
   &-bottom {
     &-container {
+      bottom: 1rem;
       height: 200px;
       margin-top: 2rem;
+      position: absolute;
       width: 100%;
     }
   }

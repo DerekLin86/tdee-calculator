@@ -39,12 +39,14 @@
 .sport-fequency {
   &-container {
     @include sharedContainerBlock();
+    position: relative;
   }
   &-title-container {
     @include sharedTitleBlock();
   }
   &-content-container {
     @include contentContainer();
+    height: 30%;
     justify-content: space-evenly;
     margin-bottom: 1rem;
   }
@@ -81,8 +83,10 @@
   }
   &-bottom {
     &-container {
+      bottom: 1rem;
       height: 200px;
       margin-top: 2rem;
+      position: absolute;
       width: 100%;
     }
   }
