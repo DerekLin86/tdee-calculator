@@ -34,6 +34,78 @@ Amending the base HTML file as follows:
 </apex:page>
 ```
 
-# How to communicate with Saleforce controller?
+# How to communicate with Salesforce controller?
+1. Get a reference of Salesforce controller.
+  ```
+  <body>
+    ...
+    <script>
+      salesfoceTestWrapper = null
+      if (typeof salesfoceTest != 'undefined') {
+        salesfoceTestWrapper = salesfoceTest;
+      }
+            
+      function getsalesfoceTestWrapper() {
+        return salesfoceTestWrapper;
+      }
+    </script>
+  </body>
+  ```
+2. Add a interface to define the controller's methods.
+```
+// salesforceTest-controller.ts
+
+//Response information
+export interface ApiStatus {
+  statusCode: number;
+  status: boolean;
+  code: string;
+  message: string;
+  method?: string;
+}
+
+export interface CallConfiguration {
+  buffer: boolean;
+  escape: boolean;
+  timeout: number;
+}
+
+//Config options for making api call.
+export interface CallConfiguration {
+  buffer: boolean,
+  escape: boolean,
+  timeout: number
+}
+```
+3. Define your own controller's methods.
+```
+export interface DataAPI {
+  helloAngular(name: string, callback : ApiHandler<string>, configuration : CallConfiguration) : void;
+}
+```
+4. Add the controller into your component.
+```
+// app.component.ts
+
+declare var getsalesfoceTestWrapper : () => DataApi;
+
+...
+
+private defaultCongiguration: CallConfiguration = {
+  buffer: true,
+  escape: false,
+  timeout: 30000
+};
+
+ngOnInit() {
+  this.helloAngular();
+}
+
+helloAngular() {
+  getsalesfoceTestWrapper.helloAngular("salesforce", (result, status) => {
+    console.info(result);
+  }, this.defaultCongiguration);
+}
+```
 
 # How to access the images from static resource of Saleforce?
