@@ -109,3 +109,45 @@ helloAngular() {
 ```
 
 # How to access the images from static resource of Saleforce?
+1. Get a reference from salesforce's static resource.
+```
+//index.html
+
+<script>
+  ...
+  salesforceTestStaticResource = "{!URLFOR($Resource.salesforceTestStaticResource)}";
+
+  function getStaticResourceRoot() {
+    return salesforceTestStaticResource;
+  }
+</script>
+```
+2. Create a pipe to transform image URL from static resource.
+```
+// static-path.pipe.ts
+
+import { Pipe, PipeTransform } from '@angular/core';
+
+declare var getStaticResourceRoot: () => string;
+
+export function getStaticPathForResource(resourcePath : string) {
+    return getStaticResourceRoot() + resourcePath;
+}
+
+@Pipe({
+  name: 'staticPath'
+})
+export class StaticPathPipe implements PipeTransform {
+
+  transform(value: string): string {
+    return getStaticPathForResource(value);
+  }
+
+}
+```
+3. Use the pipe to get image on your template.
+```
+<div>
+  <img [src]="assets/test.png | staticPath">
+</div>
+```
